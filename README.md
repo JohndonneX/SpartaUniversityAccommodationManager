@@ -1,6 +1,78 @@
 # Sparta University  Accommodation Manager
 A full stack web application handling the logistics of a university halls of residence. 
 
+---------------------------------------------------------
+# Types of users
+- Public (Default)
+- Resident (Account) (First Name, Last Name, Email, Contact Number, DOB, Accommodation ID?)
+- Admin (Account) (First Name, Last Name, Email, Contact Number, Role)
+
+# Database
+
+## Room Table
+- room_id PK
+- room_type_id 
+- current_occupants int 
+- floor_no
+- ??
+
+## Room Type
+- room_type_id PK
+- max_capacity
+- no_of_bathrooms
+
+## Resident Table
+- room_id PK
+- first_name
+- last_name
+- email
+- contact_number
+- dob
+- accommodation_id
+
+## Admin Table
+
+
+
+# Sections
+
+## Login (Public)
+- Username/Password
+
+## Contact Us (Public)
+
+## Room View (Public)
+- Room Type
+- Make inquiry 
+
+## Resident Notice Board (Resident)
+- Create Post (Image, Text, Contact Details?, Post Creator Info) (See Resident Control Panel)
+- Delete/Modify Post?
+
+
+## Resident Control Panel
+- Report Issue (Noise complaint etc, Form)
+- Create Post on Resident Notice Board
+- Edit Account Details?
+
+
+## Admin Notice Board (Resident)
+- Create Post (Image, Text, Contact Details?, Post Creator Info) (See Admin Control Panel)
+
+## Admin Control Panel (Admin)
+- Resident Room Allocation
+- See report issues
+- Manage Resident Accounts (Add/Remove/Update)
+- Create Post on Admin Notice Board
+
+
+
+
+
+
+
+
+-----------------------------------------------------------
 
 Number of halls 
 Number of rooms

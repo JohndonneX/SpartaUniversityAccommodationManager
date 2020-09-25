@@ -22,7 +22,7 @@ A full stack web application handling the logistics of a university halls of res
 - no_of_bathrooms
 
 ## Resident Table
-- room_id PK
+- resident_id PK
 - first_name
 - last_name
 - email
@@ -37,6 +37,33 @@ A full stack web application handling the logistics of a university halls of res
 - contact_no
 - role
 
+## Resident Notice Table
+- resident_post_id PK
+- resident_id
+- date_posted
+- title
+- content
+
+## Admin Notice Table
+- admin_post_id PK
+- date_posted 
+- title
+- content
+
+## Inquiry Table
+- inquiry_id
+- resident_id
+- title
+- content
+- status
+
+## Issue Table
+- issue_id
+- resident_id
+- title
+- content
+- status
+
 
 # Sections
 
@@ -50,7 +77,7 @@ A full stack web application handling the logistics of a university halls of res
 - Make inquiry 
 
 ## Resident Notice Board (Resident)
-- Create Post (Image, Text, Contact Details?, Post Creator Info) (See Resident Control Panel)
+- Create Post (Text, Contact Details?, Post Creator Info) (See Resident Control Panel)
 - Delete/Modify Post?
 
 
@@ -61,11 +88,12 @@ A full stack web application handling the logistics of a university halls of res
 
 
 ## Admin Notice Board (Resident)
-- Create Post (Image, Text, Contact Details?, Post Creator Info) (See Admin Control Panel)
+- Create Post (Text, Post Creator Info) (See Admin Control Panel)
 
 ## Admin Control Panel (Admin)
 - Resident Room Allocation
-- See report issues
+- See/remove issues
+- See/remove inquiries
 - Manage Resident Accounts (Add/Remove/Update)
 - Create Post on Admin Notice Board
 

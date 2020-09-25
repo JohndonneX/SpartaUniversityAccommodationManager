@@ -26,12 +26,16 @@ A full stack web application handling the logistics of a university halls of res
 - first_name
 - last_name
 - email
-- contact_number
-- dob
-- accommodation_id
+- contact_no
+- room_id
 
 ## Admin Table
-
+- admin_id PK
+- first_name
+- last_name
+- email
+- contact_no
+- role
 
 
 # Sections

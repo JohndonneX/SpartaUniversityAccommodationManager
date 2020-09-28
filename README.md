@@ -47,12 +47,13 @@ A full stack web application handling the logistics of a university halls of res
 
 ## Admin Notice Table
 - admin_post_id PK
-- date_posted 
+- date_time_posted 
 - title
 - content
 
 ## Inquiry Table
 - inquiry_id
+- date_time_posted
 - email
 - contact_no
 - content
@@ -60,16 +61,16 @@ A full stack web application handling the logistics of a university halls of res
 
 ## Issue Table
 - issue_id
-- date_posted
+- date_time_posted
 - title
 - content
 - status
-- date_resolved
+- date_time_resolved
 
 ## Delivery Table
 - delivery_id PK
 - resident_id
-- date_of_arrival
+- date_time_of_arrival
 - description
 
 ## Booking Table

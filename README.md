@@ -35,6 +35,8 @@ A full stack web application handling the logistics of a university halls of res
 - last_name
 - email
 - contact_no
+- profile_image
+- role
 
 ## Resident Notice Table
 - resident_post_id PK

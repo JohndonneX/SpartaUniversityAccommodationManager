@@ -55,6 +55,7 @@ A full stack web application handling the logistics of a university halls of res
 
 ## Admin Notice Table
 - admin_post_id PK
+- admin_id
 - date_time_posted 
 - title
 - content

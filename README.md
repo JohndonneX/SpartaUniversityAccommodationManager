@@ -75,13 +75,13 @@ A full stack web application handling the logistics of a university halls of res
 
 ## Booking Table
 - booking_id PK
-- recreational_room_id
+- recreational_room_type_id
 - start_date_time
 - end_date_time
 - status
 
 ## Recreational Room Type
-- recreational_room_id
+- recreational_room_type_id
 - description
 
 # Sections

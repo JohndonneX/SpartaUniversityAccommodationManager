@@ -4,8 +4,8 @@ A full stack web application handling the logistics of a university halls of res
 ---------------------------------------------------------
 # Types of users
 - Public (Default)
-- Resident (Account) (First Name, Last Name, Email, Contact Number, DOB, Accommodation ID?)
-- Admin (Account) (First Name, Last Name, Email, Contact Number, Role)
+- Resident (Account) 
+- Admin (Account) 
 
 # Database
 
@@ -53,6 +53,8 @@ A full stack web application handling the logistics of a university halls of res
 
 ## Inquiry Table
 - inquiry_id
+- email
+- contact_no
 - content
 - status
 
@@ -70,6 +72,16 @@ A full stack web application handling the logistics of a university halls of res
 - date_of_arrival
 - description
 
+## Booking Table
+- booking_id PK
+- recreational_room_id
+- start_date_time
+- end_date_time
+- status
+
+## Recreational Room Type
+- recreational_room_id
+- description
 
 # Sections
 
@@ -79,15 +91,15 @@ A full stack web application handling the logistics of a university halls of res
 - Username/Password
 
 ## Contact Us (Public)
+- Make inquiry
 
 ## Room View (Public)
-- Room Type
-- Make inquiry 
+- Room information
 
 # Resident
 
 ## Resident Notice Board (Resident)
-- Create Post (Text, Contact Details?, Post Creator Info) (See Resident Control Panel)
+- Create Post (See Resident Control Panel)
 - Delete/Modify Post?
 
 

@@ -19,7 +19,7 @@ A full stack web application handling the logistics of a university halls of res
 ## Occupancy Type
 - room_type_id PK
 - no_of_bedrooms
-- description
+- type_description
 
 ## Login Table
 - login_id

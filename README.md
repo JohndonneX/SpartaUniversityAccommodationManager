@@ -41,7 +41,7 @@ A full stack web application handling the logistics of a university halls of res
 ## Resident Notice Table
 - resident_post_id PK
 - resident_id
-- date_posted
+- date_time_posted
 - title
 - content
 

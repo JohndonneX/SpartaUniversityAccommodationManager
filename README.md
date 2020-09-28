@@ -140,20 +140,6 @@ A full stack web application handling the logistics of a university halls of res
 
 
 
-## Admin Notice Board (Resident)
-- Create Post (Text, Post Creator Info) (See Admin Control Panel)
-
-## Admin Control Panel (Admin)
-- Resident Room Allocation
-- See/remove issues
-- See/remove inquiries
-- Manage Resident Accounts (Add/Remove/Update)
-- Create Post on Admin Notice Board
-
-
-
-
-
 
 
 

@@ -99,15 +99,45 @@ A full stack web application handling the logistics of a university halls of res
 # Resident
 
 ## Resident Notice Board (Resident)
-- Create Post (See Resident Control Panel)
-- Delete/Modify Post?
+- Create Post 
+- Mods can delete
 
+## Admin Contact
+- A page that will display the names and photos of the management team and staff, their roles and contact details - maintained by admin but visible in the residents area.
 
-## Resident Control Panel
-- Create Post on Resident Notice Board
-- Edit Account Details?
+## Regulations and Rules
+- The regulations and rules for living in the Hall of Residence, again maintained by admin.
+
+## Booking Recreational Rooms
+- Make booking
 
 # Admin
+
+## Resident Management
+- Creation and maintenance of resident records.
+### Admin Contact Management
+### Regulations and Rules Management
+
+## Occupancy Management
+- Creation and maintenance of Occupancy records.
+
+## Recreational Management
+- See bookings, approve/decline
+
+## Maintenance Management
+- Management of the maintenance tasks outstanding.
+
+## Public Inquiry Management
+- See inquiries, mark status
+
+## Deliveries
+- Recording and advising residents of deliveries made and held in reception.
+
+## Admin Notice Board
+- A noticeboard facility to keep residents abreast of important upcoming events or ongoing maintenance issues. The update of this will be the responsibility of the administrators but the content will be made available to residents.
+
+
+
 
 ## Admin Notice Board (Resident)
 - Create Post (Text, Post Creator Info) (See Admin Control Panel)

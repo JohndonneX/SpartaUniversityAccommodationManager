@@ -67,6 +67,8 @@ A full stack web application handling the logistics of a university halls of res
 
 # Sections
 
+# Public
+
 ## Login (Public)
 - Username/Password
 
@@ -75,6 +77,8 @@ A full stack web application handling the logistics of a university halls of res
 ## Room View (Public)
 - Room Type
 - Make inquiry 
+
+# Resident
 
 ## Resident Notice Board (Resident)
 - Create Post (Text, Contact Details?, Post Creator Info) (See Resident Control Panel)
@@ -86,6 +90,7 @@ A full stack web application handling the logistics of a university halls of res
 - Create Post on Resident Notice Board
 - Edit Account Details?
 
+# Admin
 
 ## Admin Notice Board (Resident)
 - Create Post (Text, Post Creator Info) (See Admin Control Panel)

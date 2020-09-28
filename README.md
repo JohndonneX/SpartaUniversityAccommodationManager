@@ -9,17 +9,16 @@ A full stack web application handling the logistics of a university halls of res
 
 # Database
 
-## Room Table
+## Occupancy Table
 - room_id PK
 - room_type_id 
 - current_occupants int 
 - floor_no
-- ??
 
-## Room Type
+## Occupancy Type
 - room_type_id PK
-- max_capacity
-- no_of_bathrooms
+- no_of_bedrooms
+- description
 
 ## Resident Table
 - resident_id PK
@@ -28,6 +27,7 @@ A full stack web application handling the logistics of a university halls of res
 - email
 - contact_no
 - room_id
+- role
 
 ## Admin Table
 - admin_id PK
@@ -35,6 +35,7 @@ A full stack web application handling the logistics of a university halls of res
 - last_name
 - email
 - contact_no
+- profile_image
 - role
 
 ## Resident Notice Table
@@ -52,17 +53,22 @@ A full stack web application handling the logistics of a university halls of res
 
 ## Inquiry Table
 - inquiry_id
-- resident_id
-- title
 - content
 - status
 
 ## Issue Table
 - issue_id
-- resident_id
+- date_posted
 - title
 - content
 - status
+- date_resolved
+
+## Delivery Table
+- delivery_id PK
+- resident_id
+- date_of_arrival
+- description
 
 
 # Sections
@@ -86,7 +92,6 @@ A full stack web application handling the logistics of a university halls of res
 
 
 ## Resident Control Panel
-- Report Issue (Noise complaint etc, Form)
 - Create Post on Resident Notice Board
 - Edit Account Details?
 

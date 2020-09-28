@@ -20,6 +20,13 @@ A full stack web application handling the logistics of a university halls of res
 - no_of_bedrooms
 - description
 
+## Login Table
+- login_id
+- email
+- password
+- resident id
+- admin_id
+
 ## Resident Table
 - resident_id PK
 - first_name

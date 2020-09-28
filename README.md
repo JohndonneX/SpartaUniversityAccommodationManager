@@ -60,8 +60,8 @@ A full stack web application handling the logistics of a university halls of res
 - title
 - content
 
-## Inquiry Table
-- inquiry_id
+## Enquiry Table
+- enquiry_id
 - date_time_posted
 - email
 - contact_no
@@ -137,8 +137,8 @@ A full stack web application handling the logistics of a university halls of res
 ## Maintenance Management
 - Management of the maintenance tasks outstanding.
 
-## Public Inquiry Management
-- See inquiries, mark status
+## Public Enquiry Management
+- See enquiries, mark status
 
 ## Deliveries
 - Recording and advising residents of deliveries made and held in reception.

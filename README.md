@@ -80,7 +80,7 @@ A full stack web application handling the logistics of a university halls of res
 - delivery_id PK
 - resident_id
 - date_time_of_arrival
-- description
+- delivery_description
 
 ## Booking Table
 - booking_id PK

@@ -8,7 +8,12 @@ public class PublicController {
 
     @GetMapping("/")
     public String getHomepage() {
-        return "index";
+        return "/public/home";
+    }
+
+    @GetMapping("/login")
+    public String getLoginPage() {
+        return "/public/login/login";
     }
 
 

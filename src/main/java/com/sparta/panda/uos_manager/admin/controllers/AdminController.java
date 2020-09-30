@@ -1,8 +1,7 @@
 package com.sparta.panda.uos_manager.admin.controllers;
 
 import com.sparta.panda.uos_manager.admin.services.*;
-import com.sparta.panda.uos_manager.common.entities.Resident;
-import org.dom4j.rule.Mode;
+import com.sparta.panda.uos_manager.common.services.IssueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

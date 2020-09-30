@@ -1,6 +1,6 @@
 package com.sparta.panda.uos_manager.resident.controllers;
 import com.sparta.panda.uos_manager.common.entities.Issue;
-import com.sparta.panda.uos_manager.resident.services.IssueService;
+import com.sparta.panda.uos_manager.common.services.IssueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

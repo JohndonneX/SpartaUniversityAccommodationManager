@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/fragments :: layout(~{::head}, ~{::nav}, ~{::main})}">
+<head th:replace="~{fragments/head :: headFragment(title='UOS: Rooms')}">
+    <meta charset="UTF-8">
+
+    <title>Home</title>
+
+</head>
+<body>
+<nav th:replace="~{fragments/publicNavigation}">Navigation</nav>
+<main>
+    <div class="container">
+        <h3>Accommodation Rooms</h3>
+        <p>A number of options exist for students to select the type of accommodation that best suits their needs, as follows:</p>
+        <div class="row">
+            <div class="col card" th:each="roomType: ${roomTypes}">
+                <div class="card-body">
+                    <h5 th:text="${roomType.typeDescription}">Room Type</h5>
+                    <hr>
+                    <img class="d-block w-100" th:src="@{'/images/room' + ${roomType.roomTypeId} + '.png'}" alt="SOC Studio Self-Contained Flat">
+                    <br/>
+                    <dl class="row">
+                        <dt class="col-sm-9">Number of Bedrooms:</dt>
+                        <dd class="col-sm-1" th:text="${roomType.noOfBedrooms}">room number</dd>
+                    </dl>
+                    <dl class="row">
+                        <dt class="col-sm-9">Description:</dt>
+                        <dd class="col-sm-9" th:text="${roomType.noOfBedrooms}">room number</dd>
+                    </dl>
+                </div>
+            </div>
+            <span class="paddSpan"></span>
+        </div>
+        <br/>
+        <hr>
+        <br/>
+        <h3>Communal Rooms</h3>
+        <p>The hall of residence offers a number of different rooms types along with communal areas within the basement that will include games rooms and room with a bar for social gatherings of up to 100 people. </p>
+        <div class="row">
+            <div class="col card" th:each="recRoomType: ${recRoomTypes}">
+                <div class="card-body">
+                    <h5 th:text="${recRoomType.description}">Room Type</h5>
+                    <hr>
+                    <img class="d-block w-100" th:src="@{/images/pic4.jpg}" alt="SOC Rec Room">
+                    <br/>
+                    <dl class="row">
+                        <dt class="col-sm-5">Description:</dt>
+                        <dd class="col-sm-9" th:text="${recRoomType.description}">Description</dd>
+                    </dl>
+                </div>
+            </div>
+            <span class="paddSpan"></span>
+        </div>
+    </div>
+</main>
+</body>
+</html>

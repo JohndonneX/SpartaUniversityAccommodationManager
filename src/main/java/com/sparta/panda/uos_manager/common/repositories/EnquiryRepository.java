@@ -1,10 +1,13 @@
 package com.sparta.panda.uos_manager.common.repositories;
 
 import com.sparta.panda.uos_manager.common.entities.Admin;
+import com.sparta.panda.uos_manager.common.entities.Enquiry;
 import org.springframework.data.repository.CrudRepository;
 
-public interface AdminRepository extends CrudRepository<Admin, Integer> {
+public interface EnquiryRepository extends CrudRepository<Enquiry, Integer> {
 
     @Override
-    <S extends Admin> S save(S s);
+    <S extends Enquiry> S save(S s);
+
+
 }

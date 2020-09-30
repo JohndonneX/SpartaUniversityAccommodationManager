@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class EnquiryService{
+public class EnquiryService {
+
+
+
     private final EnquiryRepository enquiryRepository;
 
     @Autowired
@@ -14,7 +17,8 @@ public class EnquiryService{
         this.enquiryRepository = enquiryRepository;
     }
 
-    public void saveEnquiry(Enquiry enquiry){
+    public void saveEnquiry(Enquiry enquiry) {
         enquiryRepository.save(enquiry);
     }
+
 }

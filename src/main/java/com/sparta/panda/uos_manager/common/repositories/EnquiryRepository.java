@@ -1,5 +1,6 @@
 package com.sparta.panda.uos_manager.common.repositories;
 
+
 import com.sparta.panda.uos_manager.common.entities.Enquiry;
 import org.springframework.data.repository.CrudRepository;
 

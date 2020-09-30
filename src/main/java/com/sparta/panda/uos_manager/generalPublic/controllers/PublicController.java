@@ -18,10 +18,24 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
 import java.time.LocalDateTime;
 
 @Controller
 public class PublicController {
+    private EnquiryService enquiryService;
+
+    @Autowired
+    public PublicController(EnquiryService enquiryService) {
+        this.enquiryService = enquiryService;
+    }
+
     private EnquiryService enquiryService;
 
     @Autowired
@@ -52,6 +66,16 @@ public class PublicController {
         enquiryService.saveEnquiry(enquiry);
 
         return "/public/formSubmitResult";
+    }
+
+    @PostMapping("/login")
+    public String postLoginPage() {
+        return "/resident/resident";
+    }
+
+    @GetMapping("/success")
+    public String getSuccess() {
+        return "/public/success";
     }
 
 

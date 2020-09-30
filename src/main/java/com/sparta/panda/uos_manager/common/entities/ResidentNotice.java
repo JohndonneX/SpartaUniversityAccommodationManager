@@ -16,6 +16,7 @@ public class ResidentNotice {
 
     @Id
     @Column(name = "resident_post_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getResidentPostId() {
         return residentPostId;
     }

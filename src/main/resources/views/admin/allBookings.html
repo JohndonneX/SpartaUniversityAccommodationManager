@@ -18,6 +18,8 @@
             <th scope="col">Start Time</th>
             <th scope="col">End Time</th>
             <th scope="col">Status</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
@@ -29,6 +31,16 @@
                 <td th:text="${booking.startDateTime}">Start Time</td>
                 <td th:text="${booking.endDateTime}">End Time</td>
                 <td th:text="${booking.status}">Status</td>
+                <td>
+                    <form th:if="${booking.status == 'Pending'}" th:action="@{/approveBooking}" method="POST">
+                        <button class="nav-link btn btn-primary aButton" type="submit" name="bookingID" th:value="${booking.bookingId}">Approve</button>
+                    </form>
+                </td>
+                <td>
+                    <form th:if="${booking.status == 'Pending'}" th:action="@{/removeBooking}" method="POST">
+                        <button class="nav-link btn btn-primary aButton" type="submit" name="bookingID" th:value="${booking.bookingId}">Remove</button>
+                    </form>
+                </td>
             </tr>
         </th:block>
 

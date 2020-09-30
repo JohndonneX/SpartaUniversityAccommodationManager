@@ -35,9 +35,15 @@
                 <td th:text="${resident.role}">Role</td>
             </tr>
         </th:block>
-
         </tbody>
+
+
     </table>
+    <br>
+    <form th:action="@{/newResidentForm}" method="GET">
+        <button class="btn btn-primary aButton" type="submit" th:href="@{/newResidentForm}">Add New Resident</button>
+    </form>
+
 </main>
 </body>
 </html>

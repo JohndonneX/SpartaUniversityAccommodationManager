@@ -21,4 +21,8 @@ public class ResidentService {
         return (List<Resident>) residentRepository.findAll();
     }
 
+    public void addNewResident(Resident resident) {
+        residentRepository.save(resident);
+    }
+
 }

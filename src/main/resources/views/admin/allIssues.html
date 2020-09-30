@@ -19,7 +19,7 @@
             <th scope="col">Content</th>
             <th scope="col">Status</th>
             <th scope="col">Time Issue Resolved</th>
-            <th scope="col">Edit</th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
@@ -33,7 +33,9 @@
                     <td th:text="${issue.status}">Status</td>
                     <td th:text="${issue.dateTimeResolved}">Time Resolved</td>
                     <td>
-                        <button type="sumbit"> </button>
+                        <form th:if="${issue.status == 'Pending'}" th:action="@{/updateIssue}" method="POST">
+                            <button class="nav-link btn btn-primary aButton" type="submit" name="issueID" th:value="${issue.issueId}">Mark Completed</button>
+                        </form>
                     </td>
                 </tr>
             </th:block>

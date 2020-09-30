@@ -16,7 +16,7 @@ public class Enquiry {
 
     @Id
     @Column(name = "enquiry_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getEnquiryId() {
         return enquiryId;
     }

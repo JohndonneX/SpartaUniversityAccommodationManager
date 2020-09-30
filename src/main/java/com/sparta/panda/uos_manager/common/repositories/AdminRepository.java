@@ -5,6 +5,4 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface AdminRepository extends CrudRepository<Admin, Integer> {
 
-    @Override
-    <S extends Admin> S save(S s);
 }

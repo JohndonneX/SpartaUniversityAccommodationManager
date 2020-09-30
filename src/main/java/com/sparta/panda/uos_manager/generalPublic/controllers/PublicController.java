@@ -36,13 +36,6 @@ public class PublicController {
         this.enquiryService = enquiryService;
     }
 
-    private EnquiryService enquiryService;
-
-    @Autowired
-    public PublicController(EnquiryService enquiryService) {
-        this.enquiryService = enquiryService;
-    }
-
     @GetMapping("/")
     public String getHomepage() {
         return "/public/home";

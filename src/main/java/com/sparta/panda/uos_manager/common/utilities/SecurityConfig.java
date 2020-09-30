@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(final HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers( "../java/com/sparta/panda/uos_manager/generalPublic/**").permitAll()
+                .antMatchers( "/**", "../java/com/sparta/panda/uos_manager/generalPublic/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

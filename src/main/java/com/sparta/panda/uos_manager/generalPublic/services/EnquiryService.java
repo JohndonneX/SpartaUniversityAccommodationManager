@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 public class EnquiryService {
 
 
+
     private final EnquiryRepository enquiryRepository;
 
     @Autowired

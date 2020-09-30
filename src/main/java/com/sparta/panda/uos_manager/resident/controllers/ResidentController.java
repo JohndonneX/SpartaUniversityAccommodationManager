@@ -1,5 +1,12 @@
 package com.sparta.panda.uos_manager.resident.controllers;
-
+import com.sparta.panda.uos_manager.common.entities.Issue;
+import com.sparta.panda.uos_manager.common.services.IssueService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import com.sparta.panda.uos_manager.common.entities.ResidentNotice;
 import com.sparta.panda.uos_manager.common.utilities.CurrentUser;
 import com.sparta.panda.uos_manager.resident.services.ResidentNoticeBoardService;
@@ -13,7 +20,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import java.time.LocalDateTime;
 
 @Controller

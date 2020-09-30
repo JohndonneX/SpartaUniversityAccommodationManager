@@ -14,18 +14,18 @@
     <div class="navbar-collapse collapse w-100 dual-collapse2 order-1 order-md-0">
         <ul class="navbar-nav ml-auto text-center">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" href="" th:href="@{/}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Rooms</a>
+                <a class="nav-link" th:href="@{/rooms}">Rooms</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Facilities</a>
+                <a class="nav-link" th:href="@{/facilities}">Facilities</a>
             </li>
         </ul>
     </div>
     <div class="mx-auto my-2 order-100 order-md-1 position-relative">
-        <a class="mx-auto" href="#">
+        <a class="mx-auto" th:href="@{/}">
             <img th:src="@{/images/spartaLogo.png}">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
@@ -35,10 +35,10 @@
     <div class="navbar-collapse collapse w-100 dual-collapse2 order-2 order-md-2">
         <ul class="navbar-nav mr-auto text-center">
             <li class="nav-item">
-                <a class="nav-link" href="#">Contact Us</a>
+                <a class="nav-link" href="" th:href="@{/contactUs}">Contact Us</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link btn btn-primary aButton" href="#" role="button">Log In</a>
+                <a class="nav-link btn btn-primary aButton" th:href="@{/login}" role="button">Log In</a>
             </li>
         </ul>
     </div>

@@ -9,7 +9,43 @@
 <body>
 <nav th:replace="~{fragments/publicNavigation}">Navigation</nav>
 <main>
-    <h1>Heeyyyy</h1>
+    <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" th:src="@{/images/pic2.png}" alt="SOC Reception">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" th:src="@{/images/pic1.jpg}" alt="SOC Studio">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" th:src="@{/images/pic5.jpeg}" alt="SOC Building">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <div class="homeContainer">
+        <h2>Welcome to University of Sparta's Hall of Residence</h2>
+        <br/>
+        <div class="container-sm">
+                <p>Our hall of residence boasts an incredible 20 storey accommodation block, with 230 rooms situated within the grounds of our University’s main campus.</p>
+                <p>We have a set of 4 lifts that service each floor, as well as 2 larger service lifts used for large deliveries and removal of essential items such as white goods and furniture.</p>
+                <p>The hall of residence offers a number of different rooms types along with communal areas within the basement that will include games rooms and room with a bar for social gatherings of up to 100 people.</p>
+                <p>The ground floor houses many different offices and meeting rooms for many different work-related purposes.</p>
+                <p>At the main entrance you will find a reception area that will be manned during normal working hours on weekdays and mornings at the weekend. All entry and exit to and from the building will be though this area with access restricted by the use of electronic locks on the front doors for resident safety and security.</p>
+        </div>
+    </div>
 </main>
 </body>
 </html>

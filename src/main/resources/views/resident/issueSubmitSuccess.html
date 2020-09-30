@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/fragments :: layout(~{::head}, ~{::nav}, ~{::main})}">
+<head th:replace="~{fragments/head :: headFragment(title='UOS: Issue Submitted')}">
+    <meta charset="UTF-8">
+    <title>UOS: Issue Submitted</title>
+    <link rel ="stylesheet" href="webjars/bootstrap/4.5.2/css/bootstrap.css"/>
+</head>
+<body>
+<nav th:replace="~{fragments/publicNavigation}">Navigation</nav>
+<main>
+    <div class="container-sm">
+        <div class="alert alert-info" role="alert">
+            <h4 class="alert-heading">Issue Reported</h4>
+            <p>Thank you for logging an issue. We are sorry to hear you are having problems. Our team will be on to it as soon as possible!</p>
+            <hr>
+            <p class="mb-0">Please allow our team to take up to 10 working days to get into contact with you depending on the severity of the report.</p>
+        </div>
+    </div>
+</main>
+</body>
+</html>

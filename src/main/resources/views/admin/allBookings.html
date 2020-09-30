@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/fragments :: layout(~{::head}, ~{::nav}, ~{::main})}">
+<head th:replace="~{fragments/head :: headFragment(title='UOS: Bookings')}">
+    <meta charset="UTF-8">
+
+    <title>Home</title>
+
+</head>
+<body>
+<nav th:replace="~{fragments/publicNavigation}">Navigation</nav>
+<main>
+    <h1>Table of Bookings:</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Booking ID</th>
+            <th scope="col">Recreational Room Type ID</th>
+            <th scope="col">Start Time</th>
+            <th scope="col">End Time</th>
+            <th scope="col">Status</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <th:block th:each="booking : ${bookings}">
+            <tr>
+                <td th:text="${booking.bookingId}">Booking ID</td>
+                <td th:text="${booking.recreationalRoomTypeId}">Recreational Room Type ID</td>
+                <td th:text="${booking.startDateTime}">Start Time</td>
+                <td th:text="${booking.endDateTime}">End Time</td>
+                <td th:text="${booking.status}">Status</td>
+                <td>
+                    <form th:if="${booking.status == 'Pending'}" th:action="@{/approveBooking}" method="POST">
+                        <button class="nav-link btn btn-primary aButton" type="submit" name="bookingID" th:value="${booking.bookingId}">Approve</button>
+                    </form>
+                </td>
+                <td>
+                    <form th:if="${booking.status == 'Pending'}" th:action="@{/removeBooking}" method="POST">
+                        <button class="nav-link btn btn-primary aButton" type="submit" name="bookingID" th:value="${booking.bookingId}">Remove</button>
+                    </form>
+                </td>
+            </tr>
+        </th:block>
+
+        </tbody>
+    </table>
+</main>
+</body>
+</html>

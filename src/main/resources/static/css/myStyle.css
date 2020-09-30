@@ -1,3 +1,13 @@
+.homeContainer{
+    padding: 50px;
+}
+.mapCont{
+    text-align: center;
+    padding-bottom: 30px;
+}
+.paddSpan{
+    padding: 10px;
+}
 .footer{
     left: 0;
     bottom: 0;

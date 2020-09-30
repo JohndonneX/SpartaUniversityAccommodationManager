@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/fragments :: layout(~{::head}, ~{::nav}, ~{::main})}">
+<head th:replace="~{fragments/head :: headFragment(title='UOS: Maintenance Issues')}">
+    <meta charset="UTF-8">
+
+    <title>Home</title>
+
+</head>
+<body>
+<nav th:replace="~{fragments/publicNavigation}">Navigation</nav>
+<main>
+    <h1>Table of Issues:</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">IssueID</th>
+            <th scope="col">Time Issue Posted</th>
+            <th scope="col">Title</th>
+            <th scope="col">Content</th>
+            <th scope="col">Status</th>
+            <th scope="col">Time Issue Resolved</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+
+            <th:block th:each="issue : ${issues}">
+                <tr>
+                    <td th:text="${issue.issueId}">IssueId</td>
+                    <td th:text="${issue.dateTimePosted}">Time Posted</td>
+                    <td th:text="${issue.title}">Title</td>
+                    <td th:text="${issue.content}">Content</td>
+                    <td th:text="${issue.status}">Status</td>
+                    <td th:text="${issue.dateTimeResolved}">Time Resolved</td>
+                    <td>
+                        <form th:if="${issue.status == 'Pending'}" th:action="@{/updateIssue}" method="POST">
+                            <button class="nav-link btn btn-primary aButton" type="submit" name="issueID" th:value="${issue.issueId}">Mark Completed</button>
+                        </form>
+                    </td>
+                </tr>
+            </th:block>
+
+        </tbody>
+    </table>
+</main>
+</body>
+</html>

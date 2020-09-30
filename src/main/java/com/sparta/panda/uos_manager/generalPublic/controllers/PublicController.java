@@ -35,6 +35,11 @@ public class PublicController {
         return "/public/home";
     }
 
+    @GetMapping("/home")
+    public String getHome() {
+        return "/public/home";
+    }
+
     @GetMapping("/login")
     public String getLoginPage() {
         return "/public/login/login";

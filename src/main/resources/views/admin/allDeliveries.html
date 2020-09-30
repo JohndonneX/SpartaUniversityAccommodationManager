@@ -17,6 +17,8 @@
             <th scope="col">Resident ID</th>
             <th scope="col">Time of Arrival</th>
             <th scope="col">Delivery Description</th>
+            <th scope="col">Status</th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
@@ -27,6 +29,12 @@
                 <td th:text="${delivery.residentId}">Resident ID</td>
                 <td th:text="${delivery.dateTimeOfArrival}">Time of Arrival</td>
                 <td th:text="${delivery.deliveryDescription}">Delivery Description</td>
+                <td th:text="${delivery.status}">Delivery Description</td>
+                <td>
+                    <form th:if="${delivery.status == 'Awaiting Collection'}" th:action="@{/markDelivery}" method="POST">
+                        <button class="nav-link btn btn-primary aButton" type="submit" name="deliveryID" th:value="${delivery.deliveryId}">Mark Collected</button>
+                    </form>
+                </td>
             </tr>
         </th:block>
 

@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/fragments :: layout(~{::head}, ~{::nav}, ~{::main})}">
+<head th:replace="~{fragments/head :: headFragment(title='UOS: Form Submitted')}">
     <meta charset="UTF-8">
     <title>UOS: Form Submitted</title>
-    <link rel ="stylesheet" href="/static/css/myStyle.css"/>
     <link rel ="stylesheet" href="webjars/bootstrap/4.5.2/css/bootstrap.css"/>
 </head>
 <body>
-    <br/>
-    <div class="container-sm">
-        <div class="alert alert-success" role="alert">
-            <h4 class="alert-heading">Thank you</h4>
-            <p>Thank you for showing interest in joining us at Univeristy of Sparta Hall of Residence. We look forward to housing you soon! You have successfully submitted your enquiry.</p>
-            <hr>
-            <p class="mb-0">Please allow our team to take up to 5 working days to get into contact with you.</p>
+    <nav th:replace="~{fragments/publicNavigation}">Navigation</nav>
+    <main>
+        <div class="container-sm">
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Thank you</h4>
+                <p>Thank you for showing interest in joining us at Univeristy of Sparta Hall of Residence. We look forward to housing you soon! You have successfully submitted your enquiry.</p>
+                <hr>
+                <p class="mb-0">Please allow our team to take up to 5 working days to get into contact with you.</p>
+            </div>
         </div>
-    </div>
+    </main>
 </body>
 </html>

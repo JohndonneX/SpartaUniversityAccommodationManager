@@ -16,27 +16,32 @@
             <div class="form-group">
                 <label for="firstNameInput">First Name</label>
                 <input type="text" class="form-control" id="firstNameInput" aria-describedby="firstNameHelp" placeholder="Enter first name" th:field="*{firstName}" required>
-                <small id="firstNameHelp" class="form-text text-muted">Alphanumeric characters only</small>
+                <h6 >Alphanumeric characters only</h6>
             </div>
             <div class="form-group">
                 <label for="lastNameInput">Last Name</label>
                 <input type="text" class="form-control" id="lastNameInput" aria-describedby="lastNameHelp" placeholder="Enter last name" th:field="*{lastName}" required>
-                <small id=lastNameHelp" class="form-text text-muted">Alphanumeric characters only</small>
+                <h6 >Alphanumeric characters only</h6>
             </div>
             <div class="form-group">
                 <label for="emailInput">Email</label>
                 <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="Enter email" th:field="*{email}" required>
-                <small id=emailHelp" class="form-text text-muted">Must be in an email format (example123@mail.com)</small>
+                <h6 >Must be in an email format (example123@mail.com)</h6>
             </div>
             <div class="form-group">
                 <label for="contactInput">Contact Number</label>
                 <input type="tel" class="form-control" id="contactInput" aria-describedby="contactHelp" placeholder="Enter contact number" th:field="*{contactNo}" required>
-                <small id=contactHelp" class="form-text text-muted">Format of telephone number</small>
+                <h6>Format of telephone number</h6>
+            </div>
+            <div class="form-group">
+                <label for="roomIDInput">RoomID</label>
+                <input type="number" class="form-control" id="roomIDInput" aria-describedby="roomIDHelp" placeholder="Enter room ID" th:field="*{roomId}" required>
+                <h6>Enter a whole number/integer</h6>
             </div>
             <div class="form-group">
                 <label for="roleInput">Resident Role</label>
                 <input type="text" class="form-control" id="roleInput" aria-describedby="roleHelp" placeholder="Enter role of resident" th:field="*{role}" required>
-                <small id="roleHelp" class="form-text text-muted">Role is either "Mod" or "User"</small>
+                <h6>Role is either "Mod" or "User"</h6>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

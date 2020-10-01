@@ -2,6 +2,7 @@ package com.sparta.panda.uos_manager.admin.controllers;
 
 import com.sparta.panda.uos_manager.admin.services.*;
 import com.sparta.panda.uos_manager.common.entities.Resident;
+import com.sparta.panda.uos_manager.common.services.EnquiryService;
 import com.sparta.panda.uos_manager.common.services.IssueService;
 import com.sparta.panda.uos_manager.common.services.ResidentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,35 +17,48 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class AdminController {
 
-    private final AdminService adminService;
+    private final AdminNoticeService adminNoticeService;
     private final IssueService issueService;
     private final ResidentService residentService;
     private final OccupancyService occupancyService;
     private final DeliveryService deliveryService;
     private final BookingService bookingService;
+    private final EnquiryService enquiryService;
 
     @Autowired
-    public AdminController(AdminService adminService, IssueService issueService, ResidentService residentService,
+    public AdminController(AdminNoticeService adminNoticeService, IssueService issueService, ResidentService residentService,
                            OccupancyService occupancyService, DeliveryService deliveryService,
-                           BookingService bookingService) {
-        this.adminService = adminService;
+                           BookingService bookingService, EnquiryService enquiryService) {
+        this.adminNoticeService = adminNoticeService;
         this.issueService = issueService;
         this.residentService = residentService;
         this.occupancyService = occupancyService;
         this.deliveryService = deliveryService;
         this.bookingService = bookingService;
+        this.enquiryService = enquiryService;
     }
 
-    @GetMapping("/newResidentForm")
+    @GetMapping("/adminNewResidentForm")
     public String getResidentForm(ModelMap modelMap) {
         modelMap.addAttribute("resident", new Resident());
         return "admin/newResidentForm";
     }
 
+    @GetMapping("/adminNoticeBoard")
+    public String getAdminPosts(ModelMap modelMap) {
+        modelMap.addAttribute("adminNotices", adminNoticeService.getAllNotices());
+        return "admin/adminNoticeBoard";
+    }
+
+    @GetMapping("/adminNoticeBoardCreatePost")
+    public String adminNotices() {
+        return null;
+    }
+
     @PostMapping("/submitNewResident")
-    public String addNewResident(@ModelAttribute Resident resident) {
+    public ModelAndView addNewResident(@ModelAttribute Resident resident) {
         residentService.addNewResident(resident);
-        return "admin/allResidents";
+        return new ModelAndView("redirect:http://localhost:8080/adminResident");
     }
 
     @PostMapping("/updateIssue")
@@ -63,6 +77,18 @@ public class AdminController {
     public ModelAndView removeBooking(@RequestParam Integer bookingID, ModelMap modelMap) {
         bookingService.deleteBookingById(bookingID);
         return new ModelAndView("redirect:http://localhost:8080/adminBooking", modelMap);
+    }
+
+    @PostMapping("approveEnquiry")
+    public ModelAndView approveEnquiry(@RequestParam Integer enquiryID, ModelMap modelMap) {
+        enquiryService.approveEnquiryById(enquiryID);
+        return new ModelAndView("redirect:http://localhost:8080/adminEnquiry", modelMap);
+    }
+
+    @PostMapping("rejectEnquiry")
+    public ModelAndView rejectEnquiry(@RequestParam Integer enquiryID, ModelMap modelMap) {
+        enquiryService.rejectEnquiryById(enquiryID);
+        return new ModelAndView("redirect:http://localhost:8080/adminEnquiry", modelMap);
     }
 
     @PostMapping("/markDelivery")
@@ -99,6 +125,12 @@ public class AdminController {
     public String getBookings(ModelMap modelMap) {
         modelMap.addAttribute("bookings", bookingService.getAlBookings());
         return "/admin/allBookings";
+    }
+
+    @GetMapping("/adminEnquiry")
+    public String getEnquiries(ModelMap modelMap) {
+        modelMap.addAttribute("enquiries", enquiryService.getAllEnquiries());
+        return "/admin/allEnquiries";
     }
 
 }

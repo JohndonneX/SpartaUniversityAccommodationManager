@@ -18,7 +18,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication()
                 .withUser("panda@panda.com").password(passwordEncoder().encode("panda")).roles("ADMIN")
                 .and()
-                .withUser("user2").password(passwordEncoder().encode("user2Pass")).roles("USER")
+                .withUser("u2").password(passwordEncoder().encode("u2")).roles("USER")
                 .and()
                 .withUser("admin").password(passwordEncoder().encode("adminPass")).roles("ADMIN")
                 .and()
@@ -28,13 +28,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
         http
+                .csrf().disable()
                 .authorizeRequests()
-                .antMatchers( "/**", "../java/com/sparta/panda/uos_manager/generalPublic/**").permitAll()
+                .antMatchers("/admin*").hasRole("ADMIN")
+//                .antMatchers("/anonymous*").anonymous()
+                .antMatchers("/", "/home", "/css/**", "/images/**", "/webjars/**", "/public/**", "/rooms",
+                        "/facilities", "/contactUs", "/login*").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login")
-                .permitAll();
+                .loginPage("/login").permitAll()
+                .loginProcessingUrl("/perform_login")
+                .defaultSuccessUrl("http://localhost:8080/home", true)
+                //.failureUrl("/login.html?error=true")
+                .failureUrl("/loginFailure")
+                .and()
+                .logout()
+                .logoutUrl("/perform_logout")
+                .deleteCookies("JSESSIONID")
+                .logoutSuccessUrl("/home");
 //                .csrf().disable()
 //                .formLogin()
 //                .loginPage("/public/login/login.html")

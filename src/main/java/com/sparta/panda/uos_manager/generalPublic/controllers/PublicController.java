@@ -3,7 +3,7 @@ package com.sparta.panda.uos_manager.generalPublic.controllers;
 import com.sparta.panda.uos_manager.common.entities.Enquiry;
 import com.sparta.panda.uos_manager.common.entities.OccupancyType;
 import com.sparta.panda.uos_manager.common.entities.RecreationalRoomType;
-import com.sparta.panda.uos_manager.generalPublic.services.EnquiryService;
+import com.sparta.panda.uos_manager.common.services.EnquiryService;
 import com.sparta.panda.uos_manager.generalPublic.services.OccupanyTypeService;
 import com.sparta.panda.uos_manager.generalPublic.services.RecreationalRoomTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +13,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -31,8 +32,8 @@ public class PublicController {
     }
 
     @GetMapping("/")
-    public String getHomepage() {
-        return "/public/home";
+    public ModelAndView getHomepage() {
+        return new ModelAndView("redirect:http://localhost:8080/home");
     }
 
     @GetMapping("/home")
@@ -43,6 +44,21 @@ public class PublicController {
     @GetMapping("/login")
     public String getLoginPage() {
         return "/public/login/login";
+    }
+
+    @PostMapping("/loginProcessing")
+    public ModelAndView processLogin() {
+        return new ModelAndView("redirect:http://localhost:8080/login");
+    }
+
+    @GetMapping("/loginFailure")
+    public String loginFailureGET() {
+        return "public/login/loginFailure";
+    }
+
+    @PostMapping("/loginFailure")
+    public String loginFailurePOST() {
+        return "public/login/loginFailure";
     }
 
     @GetMapping("/rooms")

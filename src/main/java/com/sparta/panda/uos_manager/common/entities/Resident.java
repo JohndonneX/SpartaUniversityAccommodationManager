@@ -20,6 +20,7 @@ public class Resident {
 
     @Id
     @Column(name = "resident_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getResidentId() {
         return residentId;
     }

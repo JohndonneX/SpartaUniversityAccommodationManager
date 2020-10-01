@@ -37,6 +37,21 @@ public class ResidentController {
         this.bookingService = bookingService;
     }
 
+    @GetMapping("/rr")
+    public String getRulesRegulations() {
+        return "/resident/rr";
+    }
+
+    @GetMapping("/residentHome")
+    public String getResidentHomePage() {
+        return "/resident/resident";
+    }
+
+    @GetMapping("/managementTeam")
+    public String getManagementTeam() {
+        return "/resident/managementInfo";
+    }
+
     @GetMapping("/residentNoticeBoard")
     public String getResidentNoticeBoard(Model model) {
         model.addAttribute("notices", residentNoticeBoardService.getAllNoticesOrderedByDateTimePostedDesc());

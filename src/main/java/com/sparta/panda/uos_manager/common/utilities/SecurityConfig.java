@@ -16,13 +16,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser("panda@panda.com").password(passwordEncoder().encode("panda")).roles("ADMIN")
+                .withUser("michaelcamacho@hotmail.com").password(passwordEncoder().encode("mc")).roles("USER")
                 .and()
-                .withUser("u2").password(passwordEncoder().encode("u2")).roles("USER")
+                .withUser("tasniakhan@gmail.com").password(passwordEncoder().encode("tk")).roles("USER")
                 .and()
-                .withUser("admin").password(passwordEncoder().encode("adminPass")).roles("ADMIN")
+                .withUser("davidtrieu@gmail.com").password(passwordEncoder().encode("dt")).roles("USER")
+                .and()
+                .withUser("billgates@microsoft.com").password(passwordEncoder().encode("bg")).roles("ADMIN")
+                .and()
+                .withUser("jeffbezos@microsoft.com").password(passwordEncoder().encode("jb")).roles("ADMIN")
                 .and()
                 .withUser("a").password(passwordEncoder().encode("a")).roles("ADMIN");
+
+
     }
 
     @Override
@@ -39,6 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login").permitAll()
                 .loginProcessingUrl("/perform_login")
+//                .successHandler(null)
                 .defaultSuccessUrl("http://localhost:8080/home")
                 //.failureUrl("/login.html?error=true")
                 .failureUrl("/loginFailure")

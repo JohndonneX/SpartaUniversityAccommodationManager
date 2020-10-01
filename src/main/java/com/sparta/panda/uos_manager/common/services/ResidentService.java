@@ -26,6 +26,10 @@ public class ResidentService {
         residentRepository.save(resident);
     }
 
+    public Optional<Resident> getResidentByEmail(String email) {
+        return residentRepository.findByEmail(email);
+    }
+
     public Resident getResidentById(int id) {
         Optional<Resident> resident = residentRepository.findById(id);
         if (resident.isPresent()) {

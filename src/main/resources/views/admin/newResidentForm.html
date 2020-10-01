@@ -35,13 +35,16 @@
             </div>
             <div class="form-group">
                 <label for="roomIDInput">RoomID</label>
-                <input type="number" class="form-control" id="roomIDInput" aria-describedby="roomIDHelp" placeholder="Enter room ID" th:field="*{roomId}" required>
+                <input type="number" min="0" class="form-control" id="roomIDInput" aria-describedby="roomIDHelp" placeholder="Enter room ID" th:field="*{roomId}" required>
                 <h6>Enter a whole number/integer</h6>
             </div>
             <div class="form-group">
                 <label for="roleInput">Resident Role</label>
-                <input type="text" class="form-control" id="roleInput" aria-describedby="roleHelp" placeholder="Enter role of resident" th:field="*{role}" required>
-                <h6>Role is either "Mod" or "User"</h6>
+                <select class="form-control form-control-sm" id="roleInput" th:placeholder="'Enter role of resident'" th:field="*{role}" required>
+                    <option value="Normal User">Normal</option>
+                    <option value="Mod">Moderator</option>
+                </select>
+                <h6>Role is either "Moderator" or "Normal"</h6>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

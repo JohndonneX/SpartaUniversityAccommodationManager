@@ -79,14 +79,26 @@
         </div>
         <br/>
         <div class="row">
+            <div class="col">
                 <div class="card" style="width: 20rem;">
                     <div class="card-body">
-                        <h5 class="card-title">Noticeboard</h5>
+                        <h5 class="card-title">Admin Noticeboard</h5>
                         <h6 class="card-subtitle mb-2 text-muted">View and add.</h6>
                         <p class="card-text">Inform residents of any UOS events or Hall of Residence activities to partake in.</p>
                         <a th:href="@{/adminNoticeBoard}" class="btn btn-primary">Select</a>
                     </div>
                 </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 20rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Resident Noticeboard</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">View resident noticeboard.</h6>
+                        <p class="card-text">View all posts made by residents on the resident noticeboard.</p>
+                        <a th:href="@{/residentNoticeBoard}" class="btn btn-primary">Select</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </main>

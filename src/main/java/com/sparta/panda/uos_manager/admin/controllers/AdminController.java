@@ -1,26 +1,17 @@
 package com.sparta.panda.uos_manager.admin.controllers;
 
 import com.sparta.panda.uos_manager.admin.services.*;
-import com.sparta.panda.uos_manager.common.entities.Booking;
-import com.sparta.panda.uos_manager.common.entities.Issue;
 import com.sparta.panda.uos_manager.common.entities.Resident;
 import com.sparta.panda.uos_manager.common.services.IssueService;
+import com.sparta.panda.uos_manager.common.services.ResidentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
-
-import javax.persistence.criteria.CriteriaBuilder;
-import java.awt.print.Book;
-import java.time.LocalDateTime;
-import java.time.temporal.Temporal;
-import java.util.Optional;
 
 @Controller
 public class AdminController {

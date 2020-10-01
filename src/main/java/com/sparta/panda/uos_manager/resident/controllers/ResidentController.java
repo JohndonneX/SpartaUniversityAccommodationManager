@@ -1,4 +1,5 @@
 package com.sparta.panda.uos_manager.resident.controllers;
+import com.sparta.panda.uos_manager.admin.services.AdminNoticeService;
 import com.sparta.panda.uos_manager.admin.services.AdminService;
 import com.sparta.panda.uos_manager.common.entities.*;
 import com.sparta.panda.uos_manager.common.services.BookingService;
@@ -32,11 +33,13 @@ public class ResidentController {
     private final BookingService bookingService;
     private final LoginService loginService;
     private final AdminService adminService;
+    private final AdminNoticeService adminNoticeService;
 
     @Autowired
     public ResidentController(ResidentNoticeBoardService residentNoticeBoardService, ResidentService residentService,
                               RecreationalRoomTypeService recreationalRoomTypeService, IssueService issueService,
-                              BookingService bookingService, LoginService loginService, AdminService adminService) {
+                              BookingService bookingService, LoginService loginService, AdminService adminService,
+                              AdminNoticeService adminNoticeService) {
       
         this.residentNoticeBoardService = residentNoticeBoardService;
         this.residentService = residentService;
@@ -45,6 +48,7 @@ public class ResidentController {
         this.bookingService = bookingService;
         this.loginService = loginService;
         this.adminService = adminService;
+        this.adminNoticeService = adminNoticeService;
     }
 
     @GetMapping("/rr")
@@ -106,6 +110,14 @@ public class ResidentController {
     public ModelAndView postResidentNoticeBoardDelete(@RequestParam int postId) {
         residentNoticeBoardService.deleteNotice(postId);
         return new ModelAndView("redirect:http://localhost:8080/residentNoticeBoard");
+    }
+
+    @GetMapping("/residentAnnouncement")
+    public String getAnnouncements(ModelMap modelMap) {
+
+        modelMap.addAttribute("adminNotices", adminNoticeService.getAllNotices());
+
+        return "resident/residentAnnouncement";
     }
 
     @GetMapping("/residentBooking")

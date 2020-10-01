@@ -21,7 +21,7 @@
                     <h5 class="mb-1" th:text="${notice.title}">List group item heading</h5>
                     <div class="d-flex justify-content-end">
                         <small th:text="${notice.dateTimePosted}">Date Time</small>
-                        <form th:if="${role == 'mod'}" th:action="@{/residentNoticeBoardDelete}" method="post">
+                        <form th:if="${role == 'Mod'}" th:action="@{/residentNoticeBoardDelete}" method="post">
                             <button class="nav-link btn btn-primary aButton" type="submit" name="postId" th:value="${notice.residentPostId}">Delete Post</button>
                         </form>
                     </div>

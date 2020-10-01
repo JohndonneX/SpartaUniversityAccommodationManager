@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.sparta.panda.uos_manager.common.entities.ResidentNotice;
 import com.sparta.panda.uos_manager.common.utilities.CurrentUser;
 import com.sparta.panda.uos_manager.resident.services.ResidentNoticeBoardService;
-import com.sparta.panda.uos_manager.resident.services.ResidentService;
+import com.sparta.panda.uos_manager.admin.services.ResidentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

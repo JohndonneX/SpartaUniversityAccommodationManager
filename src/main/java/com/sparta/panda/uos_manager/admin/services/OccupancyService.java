@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OccupancyService {
@@ -21,4 +22,12 @@ public class OccupancyService {
         return (List<Occupancy>) occupancyRepository.findAll();
     }
 
+    public Optional<Occupancy> getOccupancyById(Integer id) {
+        return occupancyRepository.findById(id);
+    }
+
+    public void updateOccupancy(Occupancy occupancy) {
+        occupancy.setCurrentOccupants(occupancy.getCurrentOccupants() + 1);
+        occupancyRepository.save(occupancy);
+    }
 }

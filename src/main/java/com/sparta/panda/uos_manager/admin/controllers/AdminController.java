@@ -1,6 +1,7 @@
 package com.sparta.panda.uos_manager.admin.controllers;
 
 import com.sparta.panda.uos_manager.admin.services.*;
+import com.sparta.panda.uos_manager.common.entities.Occupancy;
 import com.sparta.panda.uos_manager.common.entities.Resident;
 import com.sparta.panda.uos_manager.common.services.EnquiryService;
 import com.sparta.panda.uos_manager.common.services.BookingService;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Optional;
 
 @Controller
 public class AdminController {
@@ -64,6 +67,15 @@ public class AdminController {
 
     @PostMapping("/submitNewResident")
     public ModelAndView addNewResident(@ModelAttribute Resident resident) {
+
+        Integer roomID = resident.getRoomId();
+        Optional<Occupancy> occupancy = occupancyService.getOccupancyById(roomID);
+
+        if (occupancy.isEmpty()) {
+            return new ModelAndView("redirect:http://localhost:8080/error");
+        }
+
+        occupancyService.updateOccupancy(occupancy.get());
         residentService.addNewResident(resident);
         return new ModelAndView("redirect:http://localhost:8080/adminResident");
     }

@@ -1,8 +1,8 @@
 package com.sparta.panda.uos_manager.resident.controllers;
-import com.sparta.panda.uos_manager.common.entities.Booking;
-import com.sparta.panda.uos_manager.common.entities.Issue;
+import com.sparta.panda.uos_manager.common.entities.*;
 import com.sparta.panda.uos_manager.common.services.BookingService;
 import com.sparta.panda.uos_manager.common.services.IssueService;
+import com.sparta.panda.uos_manager.common.services.LoginService;
 import com.sparta.panda.uos_manager.generalPublic.services.RecreationalRoomTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,14 +10,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import com.sparta.panda.uos_manager.common.entities.ResidentNotice;
 import com.sparta.panda.uos_manager.common.utilities.CurrentUser;
 import com.sparta.panda.uos_manager.resident.services.ResidentNoticeBoardService;
 import com.sparta.panda.uos_manager.common.services.ResidentService;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.security.Principal;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Controller
 public class ResidentController {
@@ -27,14 +29,18 @@ public class ResidentController {
     private final RecreationalRoomTypeService recreationalRoomTypeService;
     private final IssueService issueService;
     private final BookingService bookingService;
+    private final LoginService loginService;
 
     @Autowired
-    public ResidentController(ResidentNoticeBoardService residentNoticeBoardService, ResidentService residentService, RecreationalRoomTypeService recreationalRoomTypeService, IssueService issueService, BookingService bookingService) {
+    public ResidentController(ResidentNoticeBoardService residentNoticeBoardService, ResidentService residentService,
+                              RecreationalRoomTypeService recreationalRoomTypeService, IssueService issueService,
+                              BookingService bookingService, LoginService loginService) {
         this.residentNoticeBoardService = residentNoticeBoardService;
         this.residentService = residentService;
         this.recreationalRoomTypeService = recreationalRoomTypeService;
         this.issueService = issueService;
         this.bookingService = bookingService;
+        this.loginService = loginService;
     }
 
     @GetMapping("/rr")
@@ -66,13 +72,20 @@ public class ResidentController {
     }
 
     @PostMapping("/residentNoticeBoardCreatePost")
-    public ModelAndView postResidentNoticeBoardCreatePost(@ModelAttribute ResidentNotice newResidentPost, ModelMap modelMap) {
-        newResidentPost.setResidentId(CurrentUser.getResident().getResidentId());
+    public ModelAndView postResidentNoticeBoardCreatePost(@ModelAttribute ResidentNotice newResidentPost, ModelMap modelMap, Principal principal) {
+        Optional<Login> optionalLogin = loginService.getLoginByEmail(principal.getName());
+        if (optionalLogin.isEmpty()) {
+            return new ModelAndView("redirect:http://localhost:8080/error", modelMap);
+        }
+        Resident resident = residentService.getResidentByEmail(optionalLogin.get().getEmail()).get();
+        Integer residentID = resident.getResidentId();
+
+        newResidentPost.setResidentId(residentID);
         newResidentPost.setResidentByResidentId(residentService.getResidentById(CurrentUser.getResident().getResidentId()));
         newResidentPost.setDateTimePosted(LocalDateTime.now());
         residentNoticeBoardService.saveResidentNotice(newResidentPost);
         modelMap.addAttribute("notices", residentNoticeBoardService.getAllNoticesOrderedByDateTimePostedDesc());
-        modelMap.addAttribute("role", CurrentUser.getResident().getRole());
+        modelMap.addAttribute("role", resident.getRole());
 
         return new ModelAndView("redirect:http://localhost:8080/residentNoticeBoard", modelMap);
     }

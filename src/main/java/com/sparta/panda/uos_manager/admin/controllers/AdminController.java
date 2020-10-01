@@ -2,6 +2,7 @@ package com.sparta.panda.uos_manager.admin.controllers;
 
 import com.sparta.panda.uos_manager.admin.services.*;
 import com.sparta.panda.uos_manager.common.entities.Resident;
+import com.sparta.panda.uos_manager.common.services.BookingService;
 import com.sparta.panda.uos_manager.common.services.IssueService;
 import com.sparta.panda.uos_manager.common.services.ResidentService;
 import org.springframework.beans.factory.annotation.Autowired;

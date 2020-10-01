@@ -3,6 +3,7 @@ package com.sparta.panda.uos_manager.admin.controllers;
 import com.sparta.panda.uos_manager.admin.services.*;
 import com.sparta.panda.uos_manager.common.entities.Resident;
 import com.sparta.panda.uos_manager.common.services.EnquiryService;
+import com.sparta.panda.uos_manager.common.services.BookingService;
 import com.sparta.panda.uos_manager.common.services.IssueService;
 import com.sparta.panda.uos_manager.common.services.ResidentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,12 @@ public class AdminController {
         this.deliveryService = deliveryService;
         this.bookingService = bookingService;
         this.enquiryService = enquiryService;
+    }
+
+
+    @GetMapping("/adminHome")
+    public String getAdminHome() {
+        return "admin/admin";
     }
 
     @GetMapping("/adminNewResidentForm")

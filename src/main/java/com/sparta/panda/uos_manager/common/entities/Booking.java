@@ -1,5 +1,7 @@
 package com.sparta.panda.uos_manager.common.entities;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -9,7 +11,9 @@ public class Booking {
     private Integer bookingId;
     private Integer residentId;
     private Integer recreationalRoomTypeId;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime startDateTime;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime endDateTime;
     private String status;
     private RecreationalRoomType recreationalRoomTypeByRecreationalRoomTypeId;
@@ -17,6 +21,7 @@ public class Booking {
 
     @Id
     @Column(name = "booking_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getBookingId() {
         return bookingId;
     }

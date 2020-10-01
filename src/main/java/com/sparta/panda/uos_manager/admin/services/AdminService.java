@@ -18,8 +18,9 @@ public class AdminService {
         this.adminRepository = adminRepository;
     }
 
-    public List<Admin> getAllAdmin(){
+    public List<Admin> getAllAdmin() {
         return (List<Admin>) adminRepository.findAll();
+    }
 
     public Admin getAdminById(int id) {
         Optional<Admin> admin = adminRepository.findById(id);

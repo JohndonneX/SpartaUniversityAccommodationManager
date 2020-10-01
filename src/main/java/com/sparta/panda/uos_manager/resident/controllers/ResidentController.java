@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import com.sparta.panda.uos_manager.common.utilities.CurrentUser;
 import com.sparta.panda.uos_manager.resident.services.ResidentNoticeBoardService;
 import com.sparta.panda.uos_manager.common.services.ResidentService;
 import org.springframework.ui.ModelMap;
@@ -54,8 +53,10 @@ public class ResidentController {
     }
 
     @GetMapping("/residentHome")
-    public String getResidentHomePage(ModelMap modelMap) {
-        modelMap.addAttribute("welcomeMessage", "Welcome to your resident landing page name");
+    public String getResidentHomePage(ModelMap modelMap, Principal principal) {
+        Resident resident = residentService.getResidentById(loginService.getLoginByEmail(principal.getName()).get().getResidentId());
+        modelMap.addAttribute("welcomeMessage", "Welcome to your resident landing page, "
+                + resident.getFirstName() + " " + resident.getLastName());
         return "/resident/resident";
     }
 
@@ -67,9 +68,15 @@ public class ResidentController {
     }
 
     @GetMapping("/residentNoticeBoard")
-    public String getResidentNoticeBoard(Model model) {
+    public String getResidentNoticeBoard(Model model, Principal principal) {
+        Optional<Login> optionalLogin = loginService.getLoginByEmail(principal.getName());
+        if (optionalLogin.isEmpty()) {
+            return "/exceptions/error";
+        }
+        Resident resident = residentService.getResidentByEmail(optionalLogin.get().getEmail()).get();
+
         model.addAttribute("notices", residentNoticeBoardService.getAllNoticesOrderedByDateTimePostedDesc());
-        model.addAttribute("role", CurrentUser.getResident().getRole());
+        model.addAttribute("role", resident.getRole());
         return "/resident/residentNoticeBoard";
     }
 
@@ -89,7 +96,7 @@ public class ResidentController {
         Integer residentID = resident.getResidentId();
 
         newResidentPost.setResidentId(residentID);
-        newResidentPost.setResidentByResidentId(residentService.getResidentById(CurrentUser.getResident().getResidentId()));
+        newResidentPost.setResidentByResidentId(resident);
         newResidentPost.setDateTimePosted(LocalDateTime.now());
         residentNoticeBoardService.saveResidentNotice(newResidentPost);
         return new ModelAndView("redirect:http://localhost:8080/residentNoticeBoard", modelMap);
@@ -109,8 +116,14 @@ public class ResidentController {
     }
 
     @PostMapping("/submitResidentBooking")
-    public String postResidentBooking(@ModelAttribute Booking booking, Model model) {
-        booking.setResidentId(CurrentUser.getResident().getResidentId());
+    public String postResidentBooking(@ModelAttribute Booking booking, Model model, Principal principal) {
+        Optional<Login> optionalLogin = loginService.getLoginByEmail(principal.getName());
+        if (optionalLogin.isEmpty()) {
+            return "/exceptions/error";
+        }
+        Resident resident = residentService.getResidentByEmail(optionalLogin.get().getEmail()).get();
+
+        booking.setResidentId(resident.getResidentId());
         booking.setStatus("Pending");
         bookingService.saveBooking(booking);
         return "/resident/submitResidentBooking";

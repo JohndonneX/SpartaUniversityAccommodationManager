@@ -35,6 +35,11 @@ public class AdminController {
         this.bookingService = bookingService;
     }
 
+    @GetMapping("/adminHome")
+    public String getAdminHome() {
+        return "admin/admin";
+    }
+
     @GetMapping("/newResidentForm")
     public String getResidentForm(ModelMap modelMap) {
         modelMap.addAttribute("resident", new Resident());

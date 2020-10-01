@@ -14,6 +14,7 @@
         <thead>
         <tr>
             <th scope="col">Booking ID</th>
+            <th scope="col">Resident ID</th>
             <th scope="col">Recreational Room Type ID</th>
             <th scope="col">Start Time</th>
             <th scope="col">End Time</th>
@@ -27,6 +28,7 @@
         <th:block th:each="booking : ${bookings}">
             <tr>
                 <td th:text="${booking.bookingId}">Booking ID</td>
+                <td th:text="${booking.residentId}">Resident ID</td>
                 <td th:text="${booking.recreationalRoomTypeId}">Recreational Room Type ID</td>
                 <td th:text="${booking.startDateTime}">Start Time</td>
                 <td th:text="${booking.endDateTime}">End Time</td>

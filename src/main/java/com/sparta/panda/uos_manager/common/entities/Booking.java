@@ -7,11 +7,13 @@ import java.util.Objects;
 @Entity
 public class Booking {
     private Integer bookingId;
+    private Integer residentId;
     private Integer recreationalRoomTypeId;
     private LocalDateTime startDateTime;
     private LocalDateTime endDateTime;
     private String status;
     private RecreationalRoomType recreationalRoomTypeByRecreationalRoomTypeId;
+    private Resident residentByResidentId;
 
     @Id
     @Column(name = "booking_id")
@@ -21,6 +23,16 @@ public class Booking {
 
     public void setBookingId(Integer bookingId) {
         this.bookingId = bookingId;
+    }
+
+    @Basic
+    @Column(name = "resident_id")
+    public Integer getResidentId() {
+        return residentId;
+    }
+
+    public void setResidentId(Integer residentId) {
+        this.residentId = residentId;
     }
 
     @Basic
@@ -89,4 +101,15 @@ public class Booking {
     public void setRecreationalRoomTypeByRecreationalRoomTypeId(RecreationalRoomType recreationalRoomTypeByRecreationalRoomTypeId) {
         this.recreationalRoomTypeByRecreationalRoomTypeId = recreationalRoomTypeByRecreationalRoomTypeId;
     }
+
+    @ManyToOne
+    @JoinColumn(name = "resident_id", referencedColumnName = "resident_id", nullable = false, insertable = false, updatable = false)
+    public Resident getResidentByResidentId() {
+        return residentByResidentId;
+    }
+
+    public void setResidentByResidentId(Resident residentByResidentId) {
+        this.residentByResidentId = residentByResidentId;
+    }
 }
+

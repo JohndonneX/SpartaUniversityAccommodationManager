@@ -9,7 +9,22 @@
 <body>
 <nav th:replace="~{fragments/residentNavigation}">Navigation</nav>
 <main>
-    <h1>Meet the Team</h1>
+    <br/>
+    <div class="container-md">
+        <h1>Meet the Team</h1>
+        <br/>
+        <div class="col-sm-3" th:each="admin: ${admins}">
+            <div class="row card">
+                <img th:src="@{'/images/' + ${admin.profileImage}}" width="100%" alt="adminPic">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${admin.firstName} + ' ' + ${admin.lastName}">Name</h5>
+                    <p th:text="'Contact Number: ' + ${admin.contactNo}">Contact Number</p>
+                    <p th:text="'Email: ' + ${admin.email}">Email</p>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
 </main>
 </body>
 </html>

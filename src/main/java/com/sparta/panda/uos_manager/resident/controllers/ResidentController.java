@@ -1,6 +1,6 @@
 package com.sparta.panda.uos_manager.resident.controllers;
-import com.sparta.panda.uos_manager.common.entities.Booking;
-import com.sparta.panda.uos_manager.common.entities.Issue;
+import com.sparta.panda.uos_manager.admin.services.AdminService;
+import com.sparta.panda.uos_manager.common.entities.*;
 import com.sparta.panda.uos_manager.common.services.BookingService;
 import com.sparta.panda.uos_manager.common.services.IssueService;
 import com.sparta.panda.uos_manager.generalPublic.services.RecreationalRoomTypeService;
@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import com.sparta.panda.uos_manager.common.entities.ResidentNotice;
 import com.sparta.panda.uos_manager.common.utilities.CurrentUser;
 import com.sparta.panda.uos_manager.resident.services.ResidentNoticeBoardService;
 import com.sparta.panda.uos_manager.common.services.ResidentService;
@@ -18,6 +17,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Controller
 public class ResidentController {
@@ -27,14 +27,16 @@ public class ResidentController {
     private final RecreationalRoomTypeService recreationalRoomTypeService;
     private final IssueService issueService;
     private final BookingService bookingService;
+    private final AdminService adminService;
 
     @Autowired
-    public ResidentController(ResidentNoticeBoardService residentNoticeBoardService, ResidentService residentService, RecreationalRoomTypeService recreationalRoomTypeService, IssueService issueService, BookingService bookingService) {
+    public ResidentController(ResidentNoticeBoardService residentNoticeBoardService, ResidentService residentService, RecreationalRoomTypeService recreationalRoomTypeService, IssueService issueService, BookingService bookingService, AdminService adminService) {
         this.residentNoticeBoardService = residentNoticeBoardService;
         this.residentService = residentService;
         this.recreationalRoomTypeService = recreationalRoomTypeService;
         this.issueService = issueService;
         this.bookingService = bookingService;
+        this.adminService = adminService;
     }
 
     @GetMapping("/rr")
@@ -43,12 +45,15 @@ public class ResidentController {
     }
 
     @GetMapping("/residentHome")
-    public String getResidentHomePage() {
+    public String getResidentHomePage(ModelMap modelMap) {
+        modelMap.addAttribute("welcomeMessage", "Welcome to your resident landing page name");
         return "/resident/resident";
     }
 
     @GetMapping("/managementTeam")
-    public String getManagementTeam() {
+    public String getManagementTeam(ModelMap modelMap) {
+        List<Admin> admins = adminService.getAllAdmin();
+        modelMap.addAttribute("admins", admins);
         return "/resident/managementInfo";
     }
 

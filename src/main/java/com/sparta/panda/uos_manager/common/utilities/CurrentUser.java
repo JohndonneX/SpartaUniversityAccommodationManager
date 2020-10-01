@@ -11,11 +11,12 @@ public class CurrentUser {
 
     // used for testing only
     public static Resident resident = new Resident();
-    public static Admin admin;
+    public static Admin admin = new Admin();
 
     static {
         resident.setResidentId(2);
         resident.setRole("mod"); // mod status
+        admin.setAdminId(1);
     }
 
 

@@ -1,11 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/fragments :: layout(~{::head}, ~{::nav}, ~{::main})}">
+<head th:replace="~{fragments/head :: headFragment(title='UOS: Admin Access')}">
     <meta charset="UTF-8">
-    <title>Admin</title>
+
+    <title>Home</title>
+
 </head>
 <body>
-    <h1>Admin</h1>
-
+<nav th:replace="~{fragments/adminNavigation}">Navigation</nav>
+<main>
+    <div class="container-sm">
+        <h2>Control Panel</h2>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <div class="card" style="width: 20rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Residents</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Create, maintain and manage</h6>
+                        <p class="card-text">View all current residents and manage their details stored by the system. Add new residents to the system.</p>
+                        <a th:href="@{/adminResident}" class="btn btn-primary">Select</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 25rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Occupancies</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">View, add  and alter</h6>
+                        <p class="card-text">Adding and changing the occupancy records to manage the different rooms, availability and their respective properties securely. Can add or remove a resident from the occupancy table. A response is given back detailing of a successful change or an error message otherwise</p>
+                        <a th:href="@{/adminOccupancy}" class="btn btn-primary">Select</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 20rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Enquiries</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">View and contact.</h6>
+                        <p class="card-text">View all enquiries made by potential new residents in table form to respond and mark as done.</p>
+                        <a th:href="@{/adminResident}" class="btn btn-primary">Select</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col">
+                <div class="card" style="width: 20rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Maintenance Issues</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">View, add amd modify.</h6>
+                        <p class="card-text">Keep track of what tasks need to be done, log any new jobs and keep residents facilities working.</p>
+                        <a th:href="@{/adminIssue}" class="btn btn-primary">Select</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 25rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Bookings</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">View, approve or decline.</h6>
+                        <p class="card-text">Moderate bookings made for recreational rooms by residents and approve or decline these requests to avoid clashes and ensure only appropriate bookings made.</p>
+                        <a th:href="@{/adminBooking}" class="btn btn-primary">Select</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 20rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Deliveries</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Record and manage.</h6>
+                        <p class="card-text">Manage incoming deliveries to the building and ensure residents know when available to pick up.</p>
+                        <a th:href="@{/adminDelivery}" class="btn btn-primary">Select</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+                <div class="card" style="width: 20rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Noticeboard</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">View and add.</h6>
+                        <p class="card-text">Inform residents of any UOS events or Hall of Residence activities to partake in.</p>
+                        <a th:href="@{/adminResident}" class="btn btn-primary">Select</a>
+                    </div>
+                </div>
+        </div>
+    </div>
+</main>
 </body>
 </html>

@@ -1,4 +1,5 @@
 package com.sparta.panda.uos_manager.resident.controllers;
+import com.sparta.panda.uos_manager.admin.services.AdminService;
 import com.sparta.panda.uos_manager.common.entities.*;
 import com.sparta.panda.uos_manager.common.services.BookingService;
 import com.sparta.panda.uos_manager.common.services.IssueService;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.Optional;
+import java.util.List;
 
 @Controller
 public class ResidentController {
@@ -30,17 +32,20 @@ public class ResidentController {
     private final IssueService issueService;
     private final BookingService bookingService;
     private final LoginService loginService;
+    private final AdminService adminService;
 
     @Autowired
     public ResidentController(ResidentNoticeBoardService residentNoticeBoardService, ResidentService residentService,
                               RecreationalRoomTypeService recreationalRoomTypeService, IssueService issueService,
-                              BookingService bookingService, LoginService loginService) {
+                              BookingService bookingService, LoginService loginService, AdminService adminService) {
+      
         this.residentNoticeBoardService = residentNoticeBoardService;
         this.residentService = residentService;
         this.recreationalRoomTypeService = recreationalRoomTypeService;
         this.issueService = issueService;
         this.bookingService = bookingService;
         this.loginService = loginService;
+        this.adminService = adminService;
     }
 
     @GetMapping("/rr")
@@ -49,12 +54,15 @@ public class ResidentController {
     }
 
     @GetMapping("/residentHome")
-    public String getResidentHomePage() {
+    public String getResidentHomePage(ModelMap modelMap) {
+        modelMap.addAttribute("welcomeMessage", "Welcome to your resident landing page name");
         return "/resident/resident";
     }
 
     @GetMapping("/managementTeam")
-    public String getManagementTeam() {
+    public String getManagementTeam(ModelMap modelMap) {
+        List<Admin> admins = adminService.getAllAdmin();
+        modelMap.addAttribute("admins", admins);
         return "/resident/managementInfo";
     }
 
@@ -84,9 +92,6 @@ public class ResidentController {
         newResidentPost.setResidentByResidentId(residentService.getResidentById(CurrentUser.getResident().getResidentId()));
         newResidentPost.setDateTimePosted(LocalDateTime.now());
         residentNoticeBoardService.saveResidentNotice(newResidentPost);
-        modelMap.addAttribute("notices", residentNoticeBoardService.getAllNoticesOrderedByDateTimePostedDesc());
-        modelMap.addAttribute("role", resident.getRole());
-
         return new ModelAndView("redirect:http://localhost:8080/residentNoticeBoard", modelMap);
     }
 
@@ -110,8 +115,6 @@ public class ResidentController {
         bookingService.saveBooking(booking);
         return "/resident/submitResidentBooking";
     }
-
-
 
     @GetMapping("/reportIssue")
     public String reportIssueForm(Model model) {

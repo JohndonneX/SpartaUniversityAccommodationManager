@@ -71,9 +71,6 @@ public class ResidentController {
         newResidentPost.setResidentByResidentId(residentService.getResidentById(CurrentUser.getResident().getResidentId()));
         newResidentPost.setDateTimePosted(LocalDateTime.now());
         residentNoticeBoardService.saveResidentNotice(newResidentPost);
-        modelMap.addAttribute("notices", residentNoticeBoardService.getAllNoticesOrderedByDateTimePostedDesc());
-        modelMap.addAttribute("role", CurrentUser.getResident().getRole());
-
         return new ModelAndView("redirect:http://localhost:8080/residentNoticeBoard", modelMap);
     }
 

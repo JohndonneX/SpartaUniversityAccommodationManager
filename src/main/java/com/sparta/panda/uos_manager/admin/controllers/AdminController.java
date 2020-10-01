@@ -1,19 +1,24 @@
 package com.sparta.panda.uos_manager.admin.controllers;
 
 import com.sparta.panda.uos_manager.admin.services.*;
+import com.sparta.panda.uos_manager.common.entities.AdminNotice;
 import com.sparta.panda.uos_manager.common.entities.Resident;
 import com.sparta.panda.uos_manager.common.services.EnquiryService;
 import com.sparta.panda.uos_manager.common.services.BookingService;
 import com.sparta.panda.uos_manager.common.services.IssueService;
 import com.sparta.panda.uos_manager.common.services.ResidentService;
+import com.sparta.panda.uos_manager.common.utilities.CurrentUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.time.LocalDateTime;
 
 @Controller
 public class AdminController {
@@ -25,11 +30,12 @@ public class AdminController {
     private final DeliveryService deliveryService;
     private final BookingService bookingService;
     private final EnquiryService enquiryService;
+    private final AdminService adminService;
 
     @Autowired
     public AdminController(AdminNoticeService adminNoticeService, IssueService issueService, ResidentService residentService,
                            OccupancyService occupancyService, DeliveryService deliveryService,
-                           BookingService bookingService, EnquiryService enquiryService) {
+                           BookingService bookingService, EnquiryService enquiryService, AdminService adminService) {
         this.adminNoticeService = adminNoticeService;
         this.issueService = issueService;
         this.residentService = residentService;
@@ -37,6 +43,7 @@ public class AdminController {
         this.deliveryService = deliveryService;
         this.bookingService = bookingService;
         this.enquiryService = enquiryService;
+        this.adminService = adminService;
     }
 
 
@@ -53,13 +60,29 @@ public class AdminController {
 
     @GetMapping("/adminNoticeBoard")
     public String getAdminPosts(ModelMap modelMap) {
-        modelMap.addAttribute("adminNotices", adminNoticeService.getAllNotices());
+        modelMap.addAttribute("adminNotices", adminNoticeService.getAllNoticesOrderedByDateTimePostedDesc());
         return "admin/adminNoticeBoard";
     }
 
     @GetMapping("/adminNoticeBoardCreatePost")
-    public String adminNotices() {
-        return null;
+    public String adminNotices(Model model) {
+        model.addAttribute("newAdminPost", new AdminNotice());
+        return "/admin/adminNoticeBoardCreatePost";
+    }
+
+    @PostMapping("/adminNoticeBoardCreatePost")
+    public ModelAndView postAdminNoticeBoardCreatePost(@ModelAttribute AdminNotice newAdminPost, ModelMap modelMap) {
+        newAdminPost.setAdminId(CurrentUser.getAdmin().getAdminId());
+        newAdminPost.setAdminByAdminId(adminService.getAdminById(CurrentUser.getAdmin().getAdminId()));
+        newAdminPost.setDateTimePosted(LocalDateTime.now());
+        adminNoticeService.saveAdminNotice(newAdminPost);
+        return new ModelAndView("redirect:http://localhost:8080/adminNoticeBoard", modelMap);
+    }
+
+    @PostMapping("/adminNoticeBoardDelete")
+    public ModelAndView postAdminNoticeBoardDelete(@RequestParam int postId) {
+        adminNoticeService.deleteNotice(postId);
+        return new ModelAndView("redirect:http://localhost:8080/adminNoticeBoard");
     }
 
     @PostMapping("/submitNewResident")

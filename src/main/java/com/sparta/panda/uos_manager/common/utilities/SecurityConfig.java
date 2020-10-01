@@ -24,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .withUser("billgates@microsoft.com").password(passwordEncoder().encode("bg")).roles("ADMIN")
                 .and()
-                .withUser("jeffbezos@microsoft.com").password(passwordEncoder().encode("jb")).roles("ADMIN")
+                .withUser("jeffbezos@amazon.com").password(passwordEncoder().encode("jb")).roles("ADMIN")
                 .and()
                 .withUser("a").password(passwordEncoder().encode("a")).roles("ADMIN");
 
@@ -45,9 +45,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login").permitAll()
                 .loginProcessingUrl("/perform_login")
-//                .successHandler(null)
-                .defaultSuccessUrl("http://localhost:8080/home")
-                //.failureUrl("/login.html?error=true")
+                .successHandler(new RoleUrlAuthenticationSuccessHandler())
+//                .defaultSuccessUrl("http://localhost:8080/home")
+//              .failureUrl("/login.html?error=true")
                 .failureUrl("/loginFailure")
                 .and()
                 .logout()

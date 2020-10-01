@@ -1,4 +1,4 @@
-package com.sparta.panda.uos_manager.admin.services;
+package com.sparta.panda.uos_manager.common.services;
 
 import com.sparta.panda.uos_manager.common.entities.Booking;
 import com.sparta.panda.uos_manager.common.repositories.BookingRepository;

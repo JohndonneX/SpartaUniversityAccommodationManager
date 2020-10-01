@@ -10,7 +10,7 @@
     <main>
         <div class="container">
             <h3>Get in touch:</h3>
-            <form th:action="@{/submitContactUs}" th:object="${enquiry}" method="post">
+            <form th:action="@{/publicSubmitContactUs}" th:object="${enquiry}" method="post">
                 <div class="form-group">
                     <label for="emailInput">Enter Email Address</label>
                     <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="Enter email" th:field="*{email}" required>

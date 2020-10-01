@@ -81,7 +81,7 @@ public class PublicController {
         return "/public/contactUs";
     }
 
-    @PostMapping("/submitContactUs")
+    @PostMapping("/publicSubmitContactUs")
     public String contactUsSubmit(@ModelAttribute Enquiry enquiry){
         enquiry.setStatus("Pending");
         enquiry.setDateTimePosted(LocalDateTime.now());

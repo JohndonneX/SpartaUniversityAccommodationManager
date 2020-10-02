@@ -2,28 +2,48 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/fragments :: layout(~{::head}, ~{::nav}, ~{::main})}">
 <head th:replace="~{fragments/head :: headFragment(title='UOS: Resident Announcement')}">
     <meta charset="UTF-8">
-
     <title>Resident Announcement Board</title>
-
 </head>
 <body>
 <nav th:replace="~{fragments/residentNavigation}">Navigation</nav>
 <main>
-    <h1>Announcement Board</h1>
-
-    <div class="list-group" th:each="notice : ${adminNotices}">
-        <tr>
-            <a class="list-group-item list-group-item-action flex-column align-items-start">
+    <br/>
+    <div class="container">
+        <h1>Announcement Board</h1>
+        <span class="paddSpan"></span>
+        <div class="list-group" th:each="notice : ${adminNotices}">
+            <tr>
+                <a class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1" th:text="${notice.title}">List group item heading</h5>
-                    <div class="d-flex justify-content-end">
-                        <small th:text="${notice.dateTimePosted}">Date Time</small>
-                    </div>
+                <h5 class="mb-1" th:text="${notice.title}">List group item heading</h5>
+                <div class="d-flex justify-content-end">
+                    <small th:text="${notice.dateTimePosted}">Date Time</small>
                 </div>
-                <p class="mb-1" th:text="${notice.content}">Content</p>
-                <small th:text="${notice.getAdminByAdminId().firstName} + ' ' + ${notice.getAdminByAdminId().lastName}">Poster</small>
-            </a>
+        </div>
+        <p class="mb-1" th:text="${notice.content}">Content</p>
+        <small th:text="${notice.getAdminByAdminId().firstName} + ' ' + ${notice.getAdminByAdminId().lastName}">Poster</small>
+        </a>
         </tr>
+        <br/>
+        <hr>
+
+        <h1>Deliveries</h1>
+        <span class="paddSpan"></span>
+        <div class="list-group" th:each="delivery : ${deliveries}">
+            <tr>
+                <a class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1" th:text="${delivery.getResidentByResidentId().firstName} + ' ' + ${delivery.getResidentByResidentId().getLastName()}">List group item heading</h5>
+                <div class="d-flex justify-content-end">
+                    <small th:text="${delivery.status}">Date Time</small>
+                </div>
+        </div>
+        <p class="mb-1" th:text="${delivery.deliveryDescription}">Content</p>
+        <small th:text="${delivery.dateTimeOfArrival}">Poster</small>
+        </a>
+        </tr>
+        <br/>
+
     </div>
 </main>
 </body>

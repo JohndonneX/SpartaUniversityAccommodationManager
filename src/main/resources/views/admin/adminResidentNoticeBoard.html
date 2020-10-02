@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/fragments :: layout(~{::head}, ~{::nav}, ~{::main})}">
+<head th:replace="~{fragments/head :: headFragment(title='UOS: Admin Notice Board')}">
+    <meta charset="UTF-8">
+
+    <title>Admin Notice Board</title>
+
+</head>
+<body>
+<nav th:replace="~{fragments/adminNavigation}">Navigation</nav>
+<main>
+
+    <h1>Resident Notice Board</h1>
+    <div class="list-group" th:each="notice : ${notices}">
+        <tr>
+            <a class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1" th:text="${notice.title}">List group item heading</h5>
+                    <div class="d-flex justify-content-end">
+                        <small th:text="${notice.dateTimePosted}">Date Time</small>
+                        <form th:action="@{/residentNoticeBoardDelete}" method="post">
+                            <button class="nav-link btn btn-primary aButton" type="submit" name="postId" th:value="${notice.residentPostId}">Delete Post</button>
+                        </form>
+                    </div>
+                </div>
+                <p class="mb-1" th:text="${notice.content}">Content</p>
+                <small th:text="${notice.residentByResidentId.firstName} + ' ' + ${notice.residentByResidentId.lastName}">Poster</small>
+            </a>
+        </tr>
+    </div>
+</main>
+</body>
+</html>

@@ -9,7 +9,6 @@
 <body>
 <nav th:replace="~{fragments/adminNavigation}">Navigation</nav>
 <main>
-    <br/>
     <div class="container">
         <h3>Create New Post:</h3>
         <form th:action="@{/adminNoticeBoardCreatePost}" th:object="${newAdminPost}" method="post">
@@ -22,7 +21,7 @@
                 <label for="postBody">Enter Notice Content</label>
                 <textarea class="form-control" id="postBody" rows="5" th:field="*{content}" required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary orangeBtn">Submit</button>
         </form>
     </div>
 

@@ -9,7 +9,9 @@
 <body>
 <nav th:replace="~{fragments/adminNavigation}">Navigation</nav>
 <main>
+    <div class="container">
     <h1>Table of Bookings:</h1>
+        <span class="paddSpan"></span>
     <table class="table">
         <thead>
         <tr>
@@ -40,7 +42,7 @@
                 </td>
                 <td>
                     <form th:if="${booking.status == 'Pending'}" th:action="@{/removeBooking}" method="POST">
-                        <button class="nav-link btn btn-primary aButton" type="submit" name="bookingID" th:value="${booking.bookingId}">Remove</button>
+                        <button class="nav-link btn btn-primary pinkBtn" type="submit" name="bookingID" th:value="${booking.bookingId}">Remove</button>
                     </form>
                 </td>
             </tr>
@@ -48,6 +50,7 @@
 
         </tbody>
     </table>
+    </div>
 </main>
 </body>
 </html>

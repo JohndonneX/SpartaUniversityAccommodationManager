@@ -2,34 +2,41 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/fragments :: layout(~{::head}, ~{::nav}, ~{::main})}">
 <head th:replace="~{fragments/head :: headFragment(title='UOS: Resident Notice Board')}">
     <meta charset="UTF-8">
-
-    <title>Home</title>
-
+    <title>UOS: Resident Notice Board</title>
 </head>
 <body>
 <nav th:replace="~{fragments/residentNavigation}">Navigation</nav>
 <main>
-    <h1>Resident Notice Board</h1>
-    <div class="text-right">
-        <a type="button" class="btn btn-primary btn-lg" th:href="@{/residentNoticeBoardCreatePost}">Create Post</a>
-    </div>
-
-    <div class="list-group" th:each="notice : ${notices}">
-        <tr>
-            <a class="list-group-item list-group-item-action flex-column align-items-start">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1" th:text="${notice.title}">List group item heading</h5>
-                    <div class="d-flex justify-content-end">
-                        <small th:text="${notice.dateTimePosted}">Date Time</small>
-                        <form th:if="${role == 'Mod'}" th:action="@{/residentNoticeBoardDelete}" method="post">
-                            <button class="nav-link btn btn-primary aButton" type="submit" name="postId" th:value="${notice.residentPostId}">Delete Post</button>
-                        </form>
-                    </div>
+    <br/>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Resident Notice Board</h1>
+            </div>
+            <div class="col">
+                <div class="text-right">
+                    <a type="button" class="btn btn-primary btn-lg pinkBtn" th:href="@{/residentNoticeBoardCreatePost}">Create Post</a>
                 </div>
-                <p class="mb-1" th:text="${notice.content}">Content</p>
-                <small th:text="${notice.residentByResidentId.firstName} + ' ' + ${notice.residentByResidentId.lastName}">Poster</small>
-            </a>
-        </tr>
+            </div>
+        </div>
+        <span class="paddSpan"></span>
+        <div class="list-group" th:each="notice : ${notices}">
+            <tr>
+                <a class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1" th:text="${notice.title}">List group item heading</h5>
+                        <div class="d-flex justify-content-end">
+                            <small th:text="${notice.dateTimePosted}">Date Time</small>
+                            <form th:if="${role == 'Mod'}" th:action="@{/residentNoticeBoardDelete}" method="post">
+                                <button class="btn btn-primary orangeBtn" type="submit" name="postId" th:value="${notice.residentPostId}">Delete Post</button>
+                            </form>
+                        </div>
+                    </div>
+                    <p class="mb-1" th:text="${notice.content}">Content</p>
+                    <small th:text="${notice.residentByResidentId.firstName} + ' ' + ${notice.residentByResidentId.lastName}">Poster</small>
+                </a>
+            </tr>
+        </div>
     </div>
 </main>
 </body>

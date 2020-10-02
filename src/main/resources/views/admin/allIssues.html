@@ -9,7 +9,9 @@
 <body>
 <nav th:replace="~{fragments/adminNavigation}">Navigation</nav>
 <main>
+    <div class="container">
     <h1>Table of Issues:</h1>
+        <span class="paddSpan"></span>
     <table class="table">
         <thead>
         <tr>
@@ -34,7 +36,7 @@
                     <td th:text="${issue.dateTimeResolved}">Time Resolved</td>
                     <td>
                         <form th:if="${issue.status == 'Pending'}" th:action="@{/updateIssue}" method="POST">
-                            <button class="nav-link btn btn-primary aButton" type="submit" name="issueID" th:value="${issue.issueId}">Mark Completed</button>
+                            <button class="nav-link btn btn-primary orangeBtn" type="submit" name="issueID" th:value="${issue.issueId}">Mark Completed</button>
                         </form>
                     </td>
                 </tr>
@@ -42,6 +44,7 @@
 
         </tbody>
     </table>
+    </div>
 </main>
 </body>
 </html>

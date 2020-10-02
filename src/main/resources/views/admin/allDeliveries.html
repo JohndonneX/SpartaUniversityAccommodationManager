@@ -9,7 +9,9 @@
 <body>
 <nav th:replace="~{fragments/adminNavigation}">Navigation</nav>
 <main>
+    <div class="container">
     <h1>Table of Deliveries:</h1>
+        <span class="paddSpan"></span>
     <table class="table">
         <thead>
         <tr>
@@ -32,7 +34,7 @@
                 <td th:text="${delivery.status}">Delivery Description</td>
                 <td>
                     <form th:if="${delivery.status == 'Awaiting Collection'}" th:action="@{/markDelivery}" method="POST">
-                        <button class="nav-link btn btn-primary aButton" type="submit" name="deliveryID" th:value="${delivery.deliveryId}">Mark Collected</button>
+                        <button class="nav-link btn btn-primary orangeBtn" type="submit" name="deliveryID" th:value="${delivery.deliveryId}">Mark Collected</button>
                     </form>
                 </td>
             </tr>
@@ -40,6 +42,7 @@
 
         </tbody>
     </table>
+    </div>
 </main>
 </body>
 </html>

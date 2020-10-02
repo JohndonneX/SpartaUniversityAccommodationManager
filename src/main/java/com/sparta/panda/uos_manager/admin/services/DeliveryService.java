@@ -33,4 +33,8 @@ public class DeliveryService {
         deliveryRepository.save(delivery);
     }
 
+    public List<Delivery> getPendingDeliveries() {
+        return (List<Delivery>) deliveryRepository.findAllByStatus("Awaiting Collection");
+    }
+
 }

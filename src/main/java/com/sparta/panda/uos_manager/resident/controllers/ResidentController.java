@@ -1,6 +1,7 @@
 package com.sparta.panda.uos_manager.resident.controllers;
 import com.sparta.panda.uos_manager.admin.services.AdminNoticeService;
 import com.sparta.panda.uos_manager.admin.services.AdminService;
+import com.sparta.panda.uos_manager.admin.services.DeliveryService;
 import com.sparta.panda.uos_manager.common.entities.*;
 import com.sparta.panda.uos_manager.common.services.BookingService;
 import com.sparta.panda.uos_manager.common.services.IssueService;
@@ -34,12 +35,13 @@ public class ResidentController {
     private final LoginService loginService;
     private final AdminService adminService;
     private final AdminNoticeService adminNoticeService;
+    private final DeliveryService deliveryService;
 
     @Autowired
     public ResidentController(ResidentNoticeBoardService residentNoticeBoardService, ResidentService residentService,
                               RecreationalRoomTypeService recreationalRoomTypeService, IssueService issueService,
                               BookingService bookingService, LoginService loginService, AdminService adminService,
-                              AdminNoticeService adminNoticeService) {
+                              AdminNoticeService adminNoticeService, DeliveryService deliveryService) {
       
         this.residentNoticeBoardService = residentNoticeBoardService;
         this.residentService = residentService;
@@ -49,6 +51,7 @@ public class ResidentController {
         this.loginService = loginService;
         this.adminService = adminService;
         this.adminNoticeService = adminNoticeService;
+        this.deliveryService = deliveryService;
     }
 
     @GetMapping("/rr")
@@ -116,6 +119,7 @@ public class ResidentController {
     public String getAnnouncements(ModelMap modelMap) {
 
         modelMap.addAttribute("adminNotices", adminNoticeService.getAllNotices());
+        modelMap.addAttribute("deliveries", deliveryService.getPendingDeliveries());
 
         return "resident/residentAnnouncement";
     }

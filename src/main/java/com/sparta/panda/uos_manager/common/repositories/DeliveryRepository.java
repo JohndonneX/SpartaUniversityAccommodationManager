@@ -9,4 +9,6 @@ public interface DeliveryRepository extends CrudRepository<Delivery, Integer> {
     @Override
     <S extends Delivery> S save(S s);
 
+    Iterable<Delivery> findAllByStatus(String status);
+
 }

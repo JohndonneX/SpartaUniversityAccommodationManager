@@ -39,6 +39,10 @@ A full stack web application handling the logistics of a university halls of res
 
 ## Report Issue
 - Residents can report issues here
+
+## Admin Notice Board
+- Residents see a read only version
+
 # Admin
 
 ## Resident Management
@@ -48,7 +52,7 @@ A full stack web application handling the logistics of a university halls of res
 - See bookings, approve/decline
 
 ## Maintenance Management
-- Admins can see issues reported, can mark as completed
+- Admins can see issues reported, mark status
 
 ## Public Enquiry Management
 - See enquiries, mark status
@@ -58,5 +62,8 @@ A full stack web application handling the logistics of a university halls of res
 
 ## Admin Notice Board
 - A noticeboard facility to keep residents abreast of important upcoming events or ongoing maintenance issues. The update of this will be the responsibility of the administrators but the content will be made available to residents.
+
+## Resident Notice Board
+- Admins see a read only version
 
 

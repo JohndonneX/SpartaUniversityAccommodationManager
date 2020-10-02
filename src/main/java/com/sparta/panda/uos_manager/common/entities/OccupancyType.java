@@ -9,6 +9,7 @@ import java.util.Objects;
 public class OccupancyType {
     private Integer roomTypeId;
     private Integer noOfBedrooms;
+    private String details;
     private String typeDescription;
     private Collection<Occupancy> occupanciesByRoomTypeId;
 
@@ -30,6 +31,14 @@ public class OccupancyType {
 
     public void setNoOfBedrooms(Integer noOfBedrooms) {
         this.noOfBedrooms = noOfBedrooms;
+    }
+
+    @Basic
+    @Column
+    public String getDetails() { return details; }
+
+    public void setDetails(String details) {
+        this.details = details;
     }
 
     @Basic

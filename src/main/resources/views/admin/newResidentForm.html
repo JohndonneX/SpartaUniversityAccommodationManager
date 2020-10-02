@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/fragments :: layout(~{::head}, ~{::nav}, ~{::main})}">
+<head th:replace="~{fragments/head :: headFragment(title='UOS: Add New Resident')}">
+    <meta charset="UTF-8">
+
+    <title>UOS: Add New Resident</title>
+
+</head>
+<body>
+<nav th:replace="~{fragments/adminNavigation}">Navigation</nav>
+<main>
+    <div class="container">
+        <h3>Enter New Resident Details:</h3>
+        <p>All fields are required and ensure all data is correct and appropriate for the resident</p>
+        <form th:action="@{/submitNewResident}" th:object="${resident}" method="post">
+            <div class="form-group">
+                <label for="firstNameInput">First Name</label>
+                <input type="text" class="form-control" id="firstNameInput" aria-describedby="firstNameHelp" placeholder="Enter first name" th:field="*{firstName}" required>
+                <h6 >Alphanumeric characters only</h6>
+            </div>
+            <div class="form-group">
+                <label for="lastNameInput">Last Name</label>
+                <input type="text" class="form-control" id="lastNameInput" aria-describedby="lastNameHelp" placeholder="Enter last name" th:field="*{lastName}" required>
+                <h6 >Alphanumeric characters only</h6>
+            </div>
+            <div class="form-group">
+                <label for="emailInput">Email</label>
+                <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="Enter email" th:field="*{email}" required>
+                <h6 >Must be in an email format (example123@mail.com)</h6>
+            </div>
+            <div class="form-group">
+                <label for="contactInput">Contact Number</label>
+                <input type="tel" class="form-control" id="contactInput" aria-describedby="contactHelp" placeholder="Enter contact number" th:field="*{contactNo}" required>
+                <h6>Format of telephone number</h6>
+            </div>
+            <div class="form-group">
+                <label for="roomIDInput">RoomID</label>
+                <input type="number" min="0" class="form-control" id="roomIDInput" aria-describedby="roomIDHelp" placeholder="Enter room ID" th:field="*{roomId}" required>
+                <h6>Enter a whole number/integer</h6>
+            </div>
+            <div class="form-group">
+                <label for="roleInput">Resident Role</label>
+                <select class="form-control form-control-sm" id="roleInput" th:placeholder="'Enter role of resident'" th:field="*{role}" required>
+                    <option value="Resident">Resident</option>
+                    <option value="Mod">Moderator</option>
+                </select>
+                <h6>Role is either "Moderator" or "Normal"</h6>
+            </div>
+            <button type="submit" class="btn btn-primary aButton">Submit</button>
+        </form>
+    </div>
+</main>
+</body>
+</html>

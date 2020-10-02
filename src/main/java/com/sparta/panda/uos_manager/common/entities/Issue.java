@@ -1,9 +1,6 @@
 package com.sparta.panda.uos_manager.common.entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -18,6 +15,7 @@ public class Issue {
 
     @Id
     @Column(name = "issue_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getIssueId() {
         return issueId;
     }

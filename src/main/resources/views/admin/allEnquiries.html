@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/fragments :: layout(~{::head}, ~{::nav}, ~{::main})}">
+<head th:replace="~{fragments/head :: headFragment(title='UOS: Enquiries')}">
+    <meta charset="UTF-8">
+
+    <title>Enquiries</title>
+
+</head>
+<body>
+<nav th:replace="~{fragments/adminNavigation}">Navigation</nav>
+<main>
+    <div class="container">
+    <h1>Table of Enquiries:</h1>
+    <span class="paddSpan"></span>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">EnquiryID</th>
+            <th scope="col">Date Posted</th>
+            <th scope="col">Email</th>
+            <th scope="col">Contact No.</th>
+            <th scope="col">Content</th>
+            <th scope="col">Status</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <th:block th:each="enquiry : ${enquiries}">
+            <tr>
+                <td th:text="${enquiry.enquiryId}">EnquiryID</td>
+                <td th:text="${enquiry.dateTimePosted}">Date Posted</td>
+                <td th:text="${enquiry.email}">Email</td>
+                <td th:text="${enquiry.contactNo}">Contact No.</td>
+                <td th:text="${enquiry.content}">Content</td>
+                <td th:text="${enquiry.status}">Status</td>
+                <td>
+                    <form th:if="${enquiry.status == 'In Progress'}" th:action="@{/approveEnquiry}" method="POST">
+                        <button class="nav-link btn btn-primary aButton" type="submit" name="enquiryID" th:value="${enquiry.enquiryId}">Mark Done</button>
+                    </form>
+                </td>
+            </tr>
+        </th:block>
+
+        </tbody>
+    </table>
+    </div>
+</main>
+</body>
+</html>

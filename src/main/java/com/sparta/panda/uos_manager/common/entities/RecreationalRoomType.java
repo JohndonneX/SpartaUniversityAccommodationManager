@@ -1,5 +1,7 @@
 package com.sparta.panda.uos_manager.common.entities;
 
+import org.hibernate.annotations.BatchSize;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
@@ -8,6 +10,7 @@ import java.util.Objects;
 @Table(name = "recreational_room_type", schema = "uos_manager", catalog = "")
 public class RecreationalRoomType {
     private Integer recreationalRoomTypeId;
+    private String title;
     private String description;
     private Collection<Booking> bookingsByRecreationalRoomTypeId;
 
@@ -19,6 +22,16 @@ public class RecreationalRoomType {
 
     public void setRecreationalRoomTypeId(Integer recreationalRoomTypeId) {
         this.recreationalRoomTypeId = recreationalRoomTypeId;
+    }
+
+    @Basic
+    @Column
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     @Basic

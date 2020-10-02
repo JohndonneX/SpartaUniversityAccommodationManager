@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/fragments :: layout(~{::head}, ~{::nav}, ~{::main})}">
+<head th:replace="~{fragments/head :: headFragment(title='UOS: Occupancies')}">
+    <meta charset="UTF-8">
+
+    <title>Home</title>
+
+</head>
+<body>
+<nav th:replace="~{fragments/adminNavigation}">Navigation</nav>
+<main>
+    <div class="container">
+    <h1>Table of Occupancies:</h1>
+        <span class="paddSpan"></span>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">RoomID</th>
+            <th scope="col">Room Type ID</th>
+            <th scope="col">Current Occupants</th>
+            <th scope="col">Floor No.</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <th:block th:each="occupancy : ${occupancies}">
+            <tr>
+                <td th:text="${occupancy.roomId}">RoomID</td>
+                <td th:text="${occupancy.roomTypeId}">Room Type ID</td>
+                <td th:text="${occupancy.currentOccupants}">Current Occupants</td>
+                <td th:text="${occupancy.floorNo}">Floor No.</td>
+            </tr>
+        </th:block>
+
+        </tbody>
+    </table>
+    </div>
+</main>
+</body>
+</html>

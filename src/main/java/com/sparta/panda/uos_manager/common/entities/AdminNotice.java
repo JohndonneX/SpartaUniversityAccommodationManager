@@ -16,6 +16,7 @@ public class AdminNotice {
 
     @Id
     @Column(name = "admin_post_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getAdminPostId() {
         return adminPostId;
     }

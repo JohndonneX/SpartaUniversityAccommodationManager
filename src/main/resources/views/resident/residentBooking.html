@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/fragments :: layout(~{::head}, ~{::nav}, ~{::main})}">
+<head th:replace="~{fragments/head :: headFragment(title='UOS: Resident Booking')}">
+    <meta charset="UTF-8">
+
+    <title>Home</title>
+
+</head>
+<body>
+<nav th:replace="~{fragments/residentNavigation}">Navigation</nav>
+<main>
+    <br/>
+    <div class="container">
+    <h1>Book a Communal Room</h1>
+    <p>The hall of residence offers a number of different rooms types along with communal areas within the basement that will include games rooms and room with a bar for social gatherings of up to 100 people. </p>
+    <div class="row">
+        <div class="col card" th:each="recRoomType: ${recRoomTypes}">
+            <div class="card-body">
+                <h5 th:text="${recRoomType.title}">Room Type</h5>
+                <hr>
+                <img class="d-block w-100" th:src="@{/images/pic4.jpg}" alt="SOC Rec Room">
+                <br/>
+                <dl class="row">
+                    <dt class="col-sm-5">Description:</dt>
+                    <dd class="col-sm-9" th:text="${recRoomType.description}">Description</dd>
+                </dl>
+                <form th:action="@{/submitResidentBooking}" th:object="${booking}" method="post">
+                    <label for="datetimeStart">Enter a start date and time for your room booking:</label>
+                    <input id="datetimeStart" type="datetime-local" name="bookingDateTime" th:field="*{startDateTime}" required>
+                    <label for="datetimeEnd">Enter an end date and time for your room booking:</label>
+                    <input id="datetimeEnd" type="datetime-local" name="bookingDateTime" th:field="*{endDateTime}" required>
+                    <input id="recreationalRoomTypeId" type="hidden" name="recreationalRoomTypeId" th:value="${recRoomType.recreationalRoomTypeId}">
+                    <br/>
+                    <br/>
+                    <button type="submit" class="btn btn-primary pinkBtn btn-block">Submit</button>
+                </form>
+            </div>
+        </div>
+        <span class="paddSpan"></span>
+    </div>
+    </div>
+
+
+</main>
+</body>
+</html>

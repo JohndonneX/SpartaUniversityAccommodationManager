@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/fragments :: layout(~{::head}, ~{::nav}, ~{::main})}">
+<head th:replace="~{fragments/head :: headFragment(title='UOS: Resident Booking')}">
+    <meta charset="UTF-8">
+
+    <title>Home</title>
+
+</head>
+<body>
+<nav th:replace="~{fragments/residentNavigation}">Navigation</nav>
+<main>
+    <br/>
+    <div class="container-sm">
+        <div class="alert alert-info" role="alert">
+            <h4 class="alert-heading">Booking Submitted</h4>
+            <p>Thank you for making a booking. Your booking will be reviewed as soon as possible.</p>
+            <hr>
+            <p class="mb-0">Please allow up to 2 working days for a response.</p>
+        </div>
+    </div>
+
+
+</main>
+</body>
+</html>

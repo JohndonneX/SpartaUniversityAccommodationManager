@@ -18,6 +18,7 @@ public class Admin {
 
     @Id
     @Column(name = "admin_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getAdminId() {
         return adminId;
     }

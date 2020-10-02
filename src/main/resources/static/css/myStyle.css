@@ -1,0 +1,112 @@
+.nav-item :hover {
+    border-bottom: 4px solid #9FD775;
+    padding: 6px 0;
+}
+/* navbar */
+.navbar-light {
+    background-color: #FFFFFE !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 3px 15px 0 rgba(0, 0, 0, 0.14) !important;
+}
+
+.navbar-nav > li > a {
+    color: #353536;
+}
+
+.navbar-nav > li {
+    padding-left:20px;
+    padding-right:20px;
+}
+
+.fixed-top.scrolled {
+    background-color: rgba(243, 244, 243, 0.6) !important;
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.1), 0 0px 0px 0 rgba(0, 0, 0, 0);
+    transition: background-color 200ms linear;
+}
+
+.mapCont{
+    text-align: center;
+    padding-bottom: 30px;
+}
+.paddSpan{
+    padding: 10px;
+}
+.footer{
+    left: 0 !important;
+    bottom: 0 !important;
+    height: 180px !important;
+    width: 100% !important;
+    background-color: #353536 !important;
+}
+@media (min-width: 992px) {
+    .navbar {
+        height:100px;
+    }
+}
+.greenBtn{
+    text-decoration: none !important;
+    background-color: #9FD775 !important;
+    border-color: #9FD775 !important;
+    color: white !important;
+}
+.greenBtn:hover{
+    text-decoration: none !important;
+    background-color: #9FD775 !important;
+    border-color: #9FD775 !important;
+    color: white !important;
+}
+.pinkBtn{
+    text-decoration: none !important;
+    background-color: #EE2D56 !important;
+    border-color: #EE2D56 !important;
+    color: white !important;
+}
+.pinkBtn:hover{
+    text-decoration: none !important;
+    background-color: #EE2D56 !important;
+    border-color: #EE2D56 !important;
+    color: white !important;
+}
+.orangeBtn{
+    text-decoration: none !important;
+    background-color: #DD8449 !important;
+    border-color: #DD8449 !important;
+    color: white !important;
+}
+.orangeBtn:hover{
+    text-decoration: none !important;
+    background-color: #DD8449 !important;
+    border-color: #DD8449 !important;
+    color: white !important;
+}
+.aButton{
+    text-decoration: none !important;
+    background-color: #54A1C9 !important;
+    border-color: #54A1C9 !important;
+    color: white !important;
+}
+.aButton:hover{
+    text-decoration: none !important;
+    background-color: #54A1C9 !important;
+    border-color: #54A1C9 !important;
+    color: white !important;
+}
+
+.greenCont{
+    background-color: #9FD775;
+    width: 100vw;
+    padding:0px;
+    margin-left: calc(50% - 50vw);
+}
+
+.orangeCont{
+    background-color: #DD8449;
+    width: 100vw;
+    padding:0px;
+    margin-left: calc(50% - 50vw);
+}
+.blueCont{
+    background-color: #54A1C9;
+    width: 100vw;
+    padding:0px;
+    margin-left: calc(50% - 50vw);
+}

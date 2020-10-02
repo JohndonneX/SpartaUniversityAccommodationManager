@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/fragments :: layout(~{::head}, ~{::nav}, ~{::main})}">
+<head th:replace="~{fragments/head :: headFragment(title='UOS: Rooms')}">
+    <meta charset="UTF-8">
+
+    <title>Home</title>
+
+</head>
+<body>
+<nav th:replace="~{fragments/residentNavigation}">Navigation</nav>
+<main>
+    <video width="100%" autoplay loop>
+        <source th:src="@{/media/promoVid.mp4}" type="video/mp4">
+        Your browser does not support this video.
+    </video>
+    <span class="paddSpan"></span>
+    <div class="container-sm">
+        <h3 th:text="${welcomeMessage}"></h3>
+        <p><i>Be your best self in a network of students, academics and professional people who look out for each other</i></p>
+        <hr>
+        <span style="color: crimson">
+        <p>During the coronavirus outbreak, we’ve made some changes to our halls of residence so we can keep you safe and make sure you don't miss out on the best parts of student life. Plus we've made the process of applying for accommodation more flexible to fit around your plans.</p>
+        </span>
+        <hr>
+        <p>
+            There are many benefits to living in halls of residence. Here are three top reasons to choose halls.
+            <br/>
+        <ol>
+        <li>
+        <h6>Strong student community</h6>
+            Living in halls is a great way to meet people. Make the most of shared spaces to study, eat, watch TV and play sport together.
+            <br/>
+        </li>
+        <br/>
+        <li>
+        <h6>Safety and security</h6>
+            Our halls have 24-hour reception and security teams so there's always someone around to help. The team will also fix maintenance problems quickly with no hassle.
+            <br/>
+        </li>
+        <br/>
+        <li>
+        <h6>Our accommodation guarantee</h6>
+            We guarantee accommodation in halls for all full-time first year undergraduate and postgraduate students. Get more details about how our guarantee works on the halls pages.</p>
+        </li>
+        </ol>
+        <span style="color: #DD8449"><h4>Don't forget to follow us on our socials!!</h4></span>
+
+    </div>
+</main>
+</body>
+</html>

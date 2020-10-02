@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/fragments :: layout(~{::head}, ~{::nav}, ~{::main})}">
+<head th:replace="~{fragments/head :: headFragment(title='UOS: Admin Notice Board')}">
+    <meta charset="UTF-8">
+
+    <title>Admin Notice Board</title>
+
+</head>
+<body>
+<nav th:replace="~{fragments/adminNavigation}">Navigation</nav>
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+    <h1>Admin Notice Board</h1>
+            </div>
+            <div class="col">
+    <div class="text-right">
+        <a type="button" class="btn btn-primary btn-lg aButton" th:href="@{/adminNoticeBoardCreatePost}">Create Post</a>
+    </div>
+            </div>
+        </div>
+
+        <span class="paddSpan"></span>
+    <div class="list-group" th:each="notice : ${adminNotices}">
+        <tr>
+            <a class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1" th:text="${notice.title}">List group item heading</h5>
+                    <div class="d-flex justify-content-end">
+                        <small th:text="${notice.dateTimePosted}">Date Time</small>
+                        <span class="paddSpan"></span>
+                        <form th:action="@{/adminNoticeBoardDelete}" method="post">
+                            <button class="nav-link btn btn-primary pinkBtn" type="submit" name="postId" th:value="${notice.adminPostId}">Delete Post</button>
+                        </form>
+                    </div>
+                </div>
+                <p class="mb-1" th:text="${notice.content}">Content</p>
+                <small th:text="${notice.getAdminByAdminId().firstName} + ' ' + ${notice.getAdminByAdminId().lastName}">Poster</small>
+            </a>
+        </tr>
+        <span class="paddSpan"></span>
+    </div>
+    </div>
+</main>
+</body>
+</html>

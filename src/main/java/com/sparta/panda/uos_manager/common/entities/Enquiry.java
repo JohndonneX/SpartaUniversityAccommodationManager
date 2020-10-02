@@ -1,14 +1,12 @@
 package com.sparta.panda.uos_manager.common.entities;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
 public class Enquiry {
+    @Id
     private Integer enquiryId;
     private LocalDateTime dateTimePosted;
     private String email;
@@ -18,6 +16,7 @@ public class Enquiry {
 
     @Id
     @Column(name = "enquiry_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getEnquiryId() {
         return enquiryId;
     }

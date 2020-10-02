@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/fragments :: layout(~{::head}, ~{::nav}, ~{::main})}">
+<head th:replace="~{fragments/head :: headFragment(title='UOS: Management Team')}">
+    <meta charset="UTF-8">
+
+    <title>Home</title>
+
+</head>
+<body>
+<nav th:replace="~{fragments/residentNavigation}">Navigation</nav>
+<main>
+    <br/>
+    <div class="container-md text-center">
+        <h1>Meet the Team</h1>
+        <br/>
+        <div class="col-sm-3 text-center mx-auto" th:each="admin: ${admins}">
+            <div class="row card text-center justify-content-center">
+                <img th:src="@{'/images/' + ${admin.profileImage}}" width="100%" alt="adminPic">
+                <div class="card-body text-center justify-content-center">
+                    <h5 class="card-title" th:text="${admin.firstName} + ' ' + ${admin.lastName}">Name</h5>
+                    <p th:text="'Contact Number: ' + ${admin.contactNo}">Contact Number</p>
+                    <p th:text="'Email: ' + ${admin.email}">Email</p>
+                    <p th:text="${admin.role}">Role</p>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+</main>
+</body>
+</html>

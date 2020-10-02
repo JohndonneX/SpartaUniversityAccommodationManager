@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/fragments :: layout(~{::head}, ~{::nav}, ~{::main})}">
+<head th:replace="~{fragments/head :: headFragment(title='UOS: Residents')}">
+    <meta charset="UTF-8">
+
+    <title>Home</title>
+
+</head>
+<body>
+<nav th:replace="~{fragments/adminNavigation}">Navigation</nav>
+<main>
+    <div class="container">
+    <h1>Table of Residents:</h1>
+        <span class="paddSpan"></span>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ResidentID</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Contact No.</th>
+            <th scope="col">Room ID</th>
+            <th scope="col">Role</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <th:block th:each="resident : ${residents}">
+            <tr>
+                <td th:text="${resident.residentId}">ResidentID</td>
+                <td th:text="${resident.firstName}">First Name</td>
+                <td th:text="${resident.lastName}">Last Name</td>
+                <td th:text="${resident.email}">Email</td>
+                <td th:text="${resident.contactNo}">Contact No.</td>
+                <td th:text="${resident.roomId}">Room ID</td>
+                <td th:text="${resident.role}">Role</td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+    <br/>
+    <form th:action="@{/adminNewResidentForm}" method="GET">
+        <button class="btn btn-primary aButton" type="submit" th:href="@{/newResidentForm}">Add New Resident</button>
+    </form>
+    </div>
+</main>
+</body>
+</html>

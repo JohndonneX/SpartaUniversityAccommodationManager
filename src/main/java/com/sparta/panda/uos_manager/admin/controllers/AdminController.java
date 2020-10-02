@@ -9,6 +9,7 @@ import com.sparta.panda.uos_manager.common.services.BookingService;
 import com.sparta.panda.uos_manager.common.services.IssueService;
 import com.sparta.panda.uos_manager.common.services.ResidentService;
 import com.sparta.panda.uos_manager.common.utilities.CurrentUser;
+import com.sparta.panda.uos_manager.resident.services.ResidentNoticeBoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,11 +33,13 @@ public class AdminController {
     private final BookingService bookingService;
     private final EnquiryService enquiryService;
     private final AdminService adminService;
+    private final ResidentNoticeBoardService residentNoticeBoardService;
 
     @Autowired
     public AdminController(AdminNoticeService adminNoticeService, IssueService issueService, ResidentService residentService,
                            OccupancyService occupancyService, DeliveryService deliveryService,
-                           BookingService bookingService, EnquiryService enquiryService, AdminService adminService) {
+                           BookingService bookingService, EnquiryService enquiryService, AdminService adminService,
+                           ResidentNoticeBoardService residentNoticeBoardService) {
         this.adminNoticeService = adminNoticeService;
         this.issueService = issueService;
         this.residentService = residentService;
@@ -45,6 +48,7 @@ public class AdminController {
         this.bookingService = bookingService;
         this.enquiryService = enquiryService;
         this.adminService = adminService;
+        this.residentNoticeBoardService = residentNoticeBoardService;
     }
 
 
@@ -84,6 +88,19 @@ public class AdminController {
     public ModelAndView postAdminNoticeBoardDelete(@RequestParam int postId) {
         adminNoticeService.deleteNotice(postId);
         return new ModelAndView("redirect:http://localhost:8080/adminNoticeBoard");
+    }
+
+    @GetMapping("/adminResidentNoticeBoard")
+    public String getAdminResidentNoticeBoard(ModelMap modelMap) {
+        modelMap.addAttribute("notices", residentNoticeBoardService.getAllNoticesOrderedByDateTimePostedDesc());
+
+        return "admin/adminResidentNoticeBoard";
+    }
+
+    @PostMapping("/adminResidentNoticeBoardDelete")
+    public ModelAndView postResidentNoticeBoardDelete(@RequestParam int postId) {
+        residentNoticeBoardService.deleteNotice(postId);
+        return new ModelAndView("redirect:http://localhost:8080/adminResidentNoticeBoard");
     }
 
     @PostMapping("/submitNewResident")

@@ -9,6 +9,8 @@
 <body>
 <nav th:replace="~{fragments/residentNavigation}">Navigation</nav>
 <main>
+    <br/>
+    <div class="container">
     <h1>Book a Communal Room</h1>
     <p>The hall of residence offers a number of different rooms types along with communal areas within the basement that will include games rooms and room with a bar for social gatherings of up to 100 people. </p>
     <div class="row">
@@ -29,11 +31,13 @@
                     <input id="datetimeEnd" type="datetime-local" name="bookingDateTime" th:field="*{endDateTime}" required>
                     <input id="recreationalRoomTypeId" type="hidden" name="recreationalRoomTypeId" th:value="${recRoomType.recreationalRoomTypeId}">
                     <br/>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <br/>
+                    <button type="submit" class="btn btn-primary pinkBtn btn-block">Submit</button>
                 </form>
             </div>
         </div>
         <span class="paddSpan"></span>
+    </div>
     </div>
 
 

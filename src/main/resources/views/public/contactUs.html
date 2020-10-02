@@ -8,6 +8,7 @@
 <body>
     <nav th:replace="~{fragments/publicNavigation}">Navigation</nav>
     <main>
+        <span class="paddSpan"></span>
         <div class="container">
             <h3>Get in touch:</h3>
             <form th:action="@{/publicSubmitContactUs}" th:object="${enquiry}" method="post">
@@ -25,7 +26,7 @@
                     <input type="tel" class="form-control" id="contactNumInput" aria-describedby="telHelp" placeholder="Enter contact number" th:field="*{contactNo}">
                     <small id="telHelp" class="form-text text-muted">We'll never share your number with anyone else.</small>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary greenBtn">Submit</button>
             </form>
         </div>
     </main>

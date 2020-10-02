@@ -9,9 +9,10 @@
 <body>
 <nav th:replace="~{fragments/residentNavigation}">Navigation</nav>
 <main>
+    <br/>
     <div class="container">
         <h3>Report an Issue:</h3>
-        <p>Please enter issue using the format suggested for your issue to be acknowledged</p>
+        <p>Please enter issue using the format suggested for your issue to be acknowledged.</p>
         <form th:action="@{/submitIssueForm}" th:object="${issue}" method="post">
             <div class="form-group">
                 <label for="titleInput">Issue Subject</label>
@@ -23,7 +24,7 @@
                 <textarea class="form-control" id="issueBody" aria-describedby="bodyHelp" placeholder="Do not forget to include your full name and resident ID at the end of the report." rows="5" th:field="*{content}" required></textarea>
                 <small id="bodyHelp" class="form-text text-muted">Remember to include full name and resident ID!</small>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary greenBtn">Submit</button>
         </form>
     </div>
 </main>

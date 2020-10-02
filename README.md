@@ -1,97 +1,12 @@
 # Sparta University  Accommodation Manager
 # Created by Panda In Spring
-A full stack web application handling the logistics of a university halls of residence. 
+A full stack web application handling the logistics of a university halls of residence. There are three types of users: Public, Resident and Admin. Anyone without an account is considered a Public user and can only see certain parts of the website without logging in. A login page exists for Resident and Admin accounts to log in with an email and password, and each type of account has a unique homepage which only gives them access to relevant areas of the website. Admins have access to various administrative and website management pages and functionality
 
 ---------------------------------------------------------
 # Types of users
 - Public (Default)
 - Resident (Account) 
 - Admin (Account) 
-
-# Database
-
-## Occupancy Table
-- room_id PK
-- room_type_id 
-- current_occupants int 
-- floor_no
-
-## Occupancy Type
-- room_type_id PK
-- no_of_bedrooms
-- type_description
-
-## Login Table
-- login_id
-- email
-- password
-- resident id
-- admin_id
-
-## Resident Table
-- resident_id PK
-- first_name
-- last_name
-- email
-- contact_no
-- room_id
-- role
-
-## Admin Table
-- admin_id PK
-- first_name
-- last_name
-- email
-- contact_no
-- profile_image
-- role
-
-## Resident Notice Table
-- resident_post_id PK
-- resident_id
-- date_time_posted
-- title
-- content
-
-## Admin Notice Table
-- admin_post_id PK
-- admin_id
-- date_time_posted 
-- title
-- content
-
-## Enquiry Table
-- enquiry_id
-- date_time_posted
-- email
-- contact_no
-- content
-- status
-
-## Issue Table
-- issue_id
-- date_time_posted
-- title
-- content
-- status
-- date_time_resolved
-
-## Delivery Table
-- delivery_id PK
-- resident_id
-- date_time_of_arrival
-- delivery_description
-
-## Booking Table
-- booking_id PK
-- recreational_room_type_id
-- start_date_time
-- end_date_time
-- status
-
-## Recreational Room Type
-- recreational_room_type_id
-- description
 
 # Sections
 
@@ -125,8 +40,6 @@ A full stack web application handling the logistics of a university halls of res
 
 ## Resident Management
 - Creation and maintenance of resident records.
-### Admin Contact Management
-### Regulations and Rules Management
 
 ## Occupancy Management
 - Creation and maintenance of Occupancy records.
@@ -147,45 +60,3 @@ A full stack web application handling the logistics of a university halls of res
 - A noticeboard facility to keep residents abreast of important upcoming events or ongoing maintenance issues. The update of this will be the responsibility of the administrators but the content will be made available to residents.
 
 
-
-
-
-
-
------------------------------------------------------------
-
-Number of halls 
-Number of rooms
-Flatlets
-Rooms and room types
-Occupied or not
-Students 
-Public site - go online and apply for room or more info (accessible to all)
-Form for room enquiry
-Admin - adding or deleting students
-Notice board - what is happening, events, maintenance, problems
-Student area - for residents - specific noticeboard and blog
-Send in job requests
-Delivery noticeboard 
-Students see admin ntoicebaords 
-
-Day to day running online- web based application for the use of the public and potential students
-See what accommodation is available - can send in an enquiry form
-
--Admin only area
--for office staff
--manage which student are in which room
--repairs
--update and delete tenants etc
-
-Rooms:
-- Different types of rooms available
-
-Communication:
-- Through noticeboard that can be read by residents and admin : only admin can add to it (official noticeboard)
-
-Entry to website is for username and password for residents and admin
-
-Student can view noticeboards
-Can send in jobs request form 
-Will have the down blog/noticeboard to communicate with each other selling/event etc. 
